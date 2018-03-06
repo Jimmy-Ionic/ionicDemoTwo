@@ -1,0 +1,332 @@
+<ion-view ng-controller="ECAController as vm">
+    <!-- <ion-view ng-controller="ECAController as vm" view-title="能源消耗分析"> -->
+    <!-- <ion-nav-bar class="bar-positive">
+        <ion-nav-buttons side="left">
+            <a class="new-buttons" href="#/home/analyse">
+                <span class="left-img-button icon ion-ios-arrow-back "></span>
+            </a>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <a class="new-buttons" href="" ng-click="vm.fun.toTradeAndRegionPage()">
+                <span class="right-img-button icon ion-ios-search-strong"></span>
+            </a>
+        </ion-nav-buttons>
+    </ion-nav-bar> -->
+    <div class="bar bar-header bar-positive">
+        <button class="button button-light button-clear icon ion-ios-arrow-back left-img-button" ng-click="vm.fun.toAnalyse()">
+        </button>
+        <h1 class="title">能源消费分析</h1>
+        <button class="button button-light button-clear icon ion-ios-search-strong" ng-click="vm.fun.toTradeAndRegionPage()">
+        </button>
+    </div>
+    <ion-content class="has-header">
+        <ion-refresher pulling-text="下拉刷新" on-refresh="vm.fun.refresh()"></ion-refresher>
+        <div class="list tabs tabs-striped tabs-top common-tab-top">
+            <a class="tab-item button-full common-tab-item" ng-class="{true:'active',false:''}[vm.tabConTop==0]" id="XFJG" ng-click="vm.fun.swichTabTopIndex(0)"
+                style="max-width:500px;border-right-style:solid;border-right-width:1px;border-right-color:#c0c3c2;color:#333333">
+                <span>能源消费结构</span>
+            </a>
+            <a class="tab-item button-full common-tab-item" ng-class="{true:'active',false:''}[vm.tabConTop==1]" id="XFL" ng-click="vm.fun.swichTabTopIndex(1)"
+                style="max-width:500px;border-left-style:solid;border-left-width:1px;border-left-color:#c0c3c2;color:#333333">
+                <span>能源消费量</span>
+            </a>
+        </div>
+        <div class="common-title center">
+            <div class="font-overflow" style="width:100px;margin-right:10px;" ng-click="vm.fun.showName()">{{vm.city}}</div>
+            <!-- <select id="year" ng-model="vm.year" ng-options="item.yearValue as item.yearLabel for item in vm.yearItem" ng-change="vm.fun.yearChange()" style="height:50px;border-width:0px;background-color:#e8eee9;font-size:12px;">
+            </select> -->
+            <select id="year" ng-model="vm.year" ng-options="item for item in vm.yearItem" ng-change="vm.fun.yearChange()" style="height:50px;border-width:0px;background-color:#e8eee9;font-size:12px;">
+            </select>
+            <!-- <select id="year" ng-model="vm.year" ng-change="vm.fun.yearChange()" style="height:50px;border-width:0px;background-color:#e8eee9;font-size:12px;">
+                <option ng-repeat="item.yearValue as item.yearLabel for item in vm.yearItem">
+                </option>
+            </select> -->
+            <select id="month" ng-model="vm.month" ng-show="vm.fun.monthSel()" ng-change="vm.fun.monthChange()" style="height:50px;border-width:0px;background-color:#e8eee9;font-size:12px;">
+                <option value="01">1</option>
+                <option value="02">2</option>
+                <option value="03">3</option>
+                <option value="04">4</option>
+                <option value="05">5</option>
+                <option value="06">6</option>
+                <option value="07">7</option>
+                <option value="08">8</option>
+                <option value="09">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+            <button id="timeButton" style="border-radius:5px;height:25px;font-size:12px;width:25px;" ng-click="vm.fun.changeTimeType()">{{vm.timeName}}</button>
+        </div>
+        <div class="list">
+            <ion-slide-box on-slide-changed="vm.fun.slideChanged($index)" show-pager="false">
+                <ion-slide>
+                    <div class="list new-chartBackgroundColor">
+                        <div class="row row-no-padding">
+                            <ng-echarts class="col echarts" ec-config="vm.chartGlobalConfig" ec-option="vm.dChart" id="dChart" style="height:260px;">
+                            </ng-echarts>
+                        </div>
+                    </div>
+                </ion-slide>
+                <ion-slide>
+                    <div class="list">
+                        <div ng-show="vm.fun.isYear()">
+                            <!-- <div ng-show="true"> -->
+                            <div class="row row-no-padding new-chartBackgroundColor">
+                                <ng-echarts class="col col-100 echarts" ec-config="vm.chartGlobalConfig" ec-option="vm.pChart" id="pChart" style="height:260px">
+                                </ng-echarts>
+                            </div>
+                        </div>
+                        <div ng-show="vm.fun.isMonthAndEC()">
+                            <!-- <div ng-show="false"> -->
+                            <div class="list">
+                                <div class="row data-cut-line" style="margin-top:-2px;padding:0px !important"></div>
+                                <div class="row row-no-padding eca-data-border">
+                                    <div class="col col-20 col-center" style="text-align:center">
+                                        <i class="icon ion-flash eca-data-icon"></i>
+                                    </div>
+                                    <div class="col col-20 eca-data-name col-center">
+                                        <span>用电量</span>
+                                    </div>
+                                    <div class="col col-30" style="text-align:center">
+                                        <div class="eca-head-unit">
+                                            <span>当量/wkWh</span>
+                                        </div>
+                                        <div class="eca-data">
+                                            <span>{{vm.e1}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col col-30" style="text-align:center">
+                                        <div class="eca-head-unit">
+                                            <span>折标量/wtce</span>
+                                        </div>
+                                        <div class="eca-data">
+                                            <span>{{vm.e2}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list">
+                                <div class="row data-cut-line" style="margin-top:-2px;padding:0px !important"></div>
+                                <div class="row row-no-padding eca-data-border">
+                                    <div class="col col-20 col-center" style="text-align:center">
+                                        <i class="icon ion-flame eca-data-icon"></i>
+                                    </div>
+                                    <div class=" col col-20 eca-data-name col-center">
+                                        <span>用气量</span>
+                                    </div>
+                                    <div class="col col-30" style="text-align:center">
+                                        <div class="eca-head-unit">
+                                            <span>当量/wm
+                                                <sup>3</sup>
+                                            </span>
+                                        </div>
+                                        <div class="eca-data">
+                                            <span>{{vm.e3}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col col-30" style="text-align:center">
+                                        <div class="eca-head-unit">
+                                            <span>折标量/wtce</span>
+                                        </div>
+                                        <div class="eca-data">
+                                            <span>{{vm.e4}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list">
+                                <div class="row data-cut-line" style="margin-top:-2px;padding:0px !important"></div>
+                                <div class="row row-no-padding eca-data-border">
+                                    <div class="col col-20 col-center" style="text-align:center">
+                                        <i class="icon ion-bonfire eca-data-icon"></i>
+                                    </div>
+                                    <div class=" col col-20 eca-data-name col-center">
+                                        <span>用热量</span>
+                                    </div>
+                                    <div class="col col-30" style="text-align:center">
+                                        <div class="eca-head-unit">
+                                            <span>当量/wm
+                                                <sup>3</sup>
+                                            </span>
+                                        </div>
+                                        <div class="eca-data">
+                                            <span>{{vm.e5}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col col-30" style="text-align:center">
+                                        <div class="eca-head-unit">
+                                            <span>折标量/wtce</span>
+                                        </div>
+                                        <div class="eca-data">
+                                            <span>{{vm.e6}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list">
+                                <div class="row data-cut-line" style="margin-top:-2px;padding:0px !important"></div>
+                                <div class="row row-no-padding eca-data-border">
+                                    <div class="col col-20 col-center" style="text-align:center">
+                                        <i class="icon ion-soup-can eca-data-icon"></i>
+                                    </div>
+                                    <div class=" col col-20 eca-data-name col-center">
+                                        <span>用油量</span>
+                                    </div>
+                                    <div class="col col-30" style="text-align:center">
+                                        <div class="eca-head-unit">
+                                            <span>当量/wL</span>
+                                        </div>
+                                        <div class="eca-data">
+                                            <span>{{vm.e7}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col col-30" style="text-align:center">
+                                        <div class="eca-head-unit">
+                                            <span>折标量/wtce</span>
+                                        </div>
+                                        <div class="eca-data">
+                                            <span>{{vm.e8}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list">
+                                <div class="row data-cut-line" style="margin-top:-2px;padding:0px !important"></div>
+                                <div class="row row-no-padding eca-data-border">
+                                    <div class="col col-20 col-center" style="text-align:center">
+                                        <i class="icon ion-cube eca-data-icon"></i>
+                                    </div>
+                                    <div class=" col col-20 eca-data-name col-center">
+                                        <span>用煤量</span>
+                                    </div>
+                                    <div class="col col-30" style="text-align:center">
+                                        <div class="eca-head-unit">
+                                            <span>当量/wt</span>
+                                        </div>
+                                        <div class="eca-data">
+                                            <span>{{vm.e9}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col col-30" style="text-align:center">
+                                        <div class="eca-head-unit">
+                                            <span>折标量/wtce</span>
+                                        </div>
+                                        <div class="eca-data">
+                                            <span>{{vm.e10}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ion-slide>
+            </ion-slide-box>
+        </div>
+        <div class="list tabs tabs-top tabs-icon-top tabs-striped common-tab-center">
+            <a class="tab-item button-full common-tab-item-center" ng-class="{true:'active',false:''}[vm.tabConBottom==0]" id="tabXFL"
+                icon="ion-grid" style="border-right-style:solid;border-right-width:1px;border-right-color:#c0c3c2" ng-click="vm.fun.swichTabBottomIndex(0)">
+                <i class="icon ion-grid common-tab-center-icon" style="font-size:30px;margin-top:5px"></i>
+                <div style="font-size:13px;">能源消费量</div>
+            </a>
+            <a class="tab-item button-full common-tab-item-center" ng-class="{true:'active',false:''}[vm.tabConBottom==1]" id="tabD"
+                style="border-right-style:solid;border-right-width:1px;border-right-color:#c0c3c2;border-left-style:solid;border-left-width:1px;border-left-color:#c0c3c2"
+                ng-click="vm.fun.swichTabBottomIndex(1)">
+                <i class="icon ion-flash common-tab-center-icon" style="font-size:30px;margin-top:5px"></i>
+                <div style="font-size:13px;">电力</div>
+            </a>
+            <a class="tab-item button-full common-tab-item-center" ng-class="{true:'active',false:''}[vm.tabConBottom==2]" id="tabY"
+                style="border-right-style:solid;border-right-width:1px;border-right-color:#c0c3c2;border-left-style:solid;border-left-width:1px;border-left-color:#c0c3c2"
+                ng-click="vm.fun.swichTabBottomIndex(2)">
+                <i class="icon ion-cube common-tab-center-icon" style="font-size:30px;margin-top:5px"></i>
+                <div style="font-size:13px;">原煤</div>
+            </a>
+            <a class="tab-item button-full common-tab-item-center" ng-class="{true:'active',false:''}[vm.tabConBottom==3]" id="tabT"
+                style="border-left-style:solid;border-left-width:1px;border-left-color:#c0c3c2" ng-click="vm.fun.swichTabBottomIndex(3)">
+                <i class="icon ion-flame common-tab-center-icon" style="font-size:30px;margin-top:5px"></i>
+                <div style="font-size:13px;">天然气</div>
+            </a>
+        </div>
+        <div ng-show="vm.fun.show1()">
+            <div class="list">
+                <div class="row eca-datas-title">
+                    <div class="col col-75 eca-sec-data-title">
+                        <span>年能源消费量</span>&nbsp;
+                        <span class="eca-unit">万吨标煤</span>
+                    </div>
+                    <div class="col col-25 eca-check-history" ng-click="vm.fun.toECHistoryPage(0)">
+                        <span class="font-overflow" style="font-size:xx-small">查看历史</span>&nbsp;
+                        <i class="icon ion-chevron-right" style="color:#0c5280;font-size:xx-small"></i>
+                    </div>
+                </div>
+                <div class="row eca-main-data-content">
+                    <div class="col-60 eca-fst-data-content">
+                        <span style="font-size:20px;">{{vm.d1}}</span>
+                    </div>
+                    <div class="col-40">
+                        <div class="row eca-sec-data-content" style="border-bottom-width:1px">
+                            <div class="col-40 eca-data-title">
+                                <span>同比:</span>
+                            </div>
+                            <div class="col-60 eca-data-num">
+                                <span>{{vm.d2}}%
+                                    <i ng-class="{true:'ion-arrow-down-a color-green',false:'ion-arrow-up-a color-red'}[vm.d2<0]"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row eca-sec-data-content">
+                            <div class="col-40 eca-data-title">
+                                <span>预测:</span>
+                            </div>
+                            <div class="col-60 eca-data-num">
+                                <span>{{vm.d3}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-show='vm.fun.show2()'>
+            <div class="list">
+                <div class="row eca-datas-title">
+                    <div class="col col-100 eca-sec-data-title">
+                        <span>月能源消费量</span>&nbsp;
+                        <span class="eca-unit" style="font-size:xx-small;">万吨标煤</span>
+                    </div>
+                </div>
+                <div class="row eca-main-data-content">
+                    <div class="col-60 eca-fst-data-content">
+                        <span style="font-size:20px;">{{vm.d7}}</span>
+                    </div>
+                    <div class="col-40">
+                        <div class="row eca-sec-data-content" style="border-bottom-width:1px">
+                            <div class="col-40 eca-data-title">
+                                <span style="font-size:xx-small;">同比:</span>
+                            </div>
+                            <div class="col-60 eca-data-num">
+                                <span style="font-size:xx-small;">{{vm.d8}}%
+                                    <i ng-class="{true:'ion-arrow-down-a color-green',false:'ion-arrow-up-a color-red'}[vm.d8<0]"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row eca-sec-data-content">
+                            <div class="col-40 eca-data-title">
+                                <span style="font-size:xx-small;">环比:</span>
+                            </div>
+                            <div class="col-60 eca-data-num">
+                                <span style="font-size:xx-small;">{{vm.d9}}%
+                                    <i ng-class="{true:'ion-arrow-down-a color-green',false:'ion-arrow-up-a color-red'}[vm.d9<0]"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="height:30px;line-height:30px; border-style: solid;border-color: #c0c3c2;color: #333333;background-color:#edf0ef;border-top-width:1px;border-bottom-width:1px">
+                    <div class="col col-60 col-center" style="padding-left:20px !important;padding-top:0px !important;padding-right:0px !important;padding-bottom:0px !important;">
+                        <span style="font-size:xx-small;">预测下月:&nbsp;&nbsp;&nbsp;&nbsp;{{vm.d10}}</span>
+                    </div>
+                    <div class="col col-40"></div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

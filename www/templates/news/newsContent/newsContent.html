@@ -1,0 +1,35 @@
+<ion-view ng-controller="newsContentController as vm">
+    <!-- <ion-nav-bar class="bar-positive">
+        <ion-nav-buttons side="left">
+            <a class="new-buttons" ng-click="goBack()">
+                <i class="left-img-button icon ion-ios-arrow-back"></i>
+            </a>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+                <a class="new-buttons">
+                    <i class="right-img-button icon ion-more"></i>
+                </a>
+            </ion-nav-buttons>
+    </ion-nav-bar> -->
+    <div class="bar bar-header bar-positive">
+        <button class="button button-light button-clear icon ion-ios-arrow-back left-img-button" ng-click="goBack()">
+        </button>
+        <h1 class="title">{{vm.title}}</h1>
+        <button class="button button-light button-clear icon ion-more">
+        </button>
+    </div>
+    <ion-content class="has-header">
+        <div class="row newsContent-title">
+            <div class="col">{{vm.newsContent.title}}</div>
+        </div>
+        <div class="newsContent-content" ng-repeat="item in vm.newsContent.content">
+            <div>
+                {{item.newsText}}
+            </div>
+            <div ng-show="item.newsImg">
+                <img ng-src="{{item.newsImg}}" style="height:200px;width:100%;padding-left:5px;padding-right:5px;"></img>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

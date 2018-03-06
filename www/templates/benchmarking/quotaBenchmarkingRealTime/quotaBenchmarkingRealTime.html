@@ -1,0 +1,22 @@
+<ion-view ng-controller="quotaBenchmarkingRealTimeController as vm">
+  <!-- <ion-nav-bar class="bar-positive">
+    <ion-nav-buttons side="left">
+      <a class="new-buttons" ng-click="vm.goBack()">
+        <span class="left-img-button icon ion-ios-arrow-back "></span>
+      </a>
+    </ion-nav-buttons>
+  </ion-nav-bar> -->
+  <div class="bar bar-header bar-positive">
+      <button class="button button-light button-clear icon ion-ios-arrow-back left-img-button" ng-click="vm.goBack()">
+      </button>
+      <h1 class="title">对标结果</h1>
+    </div>
+  <ion-content class="has-header">
+    <div class="list" ng-repeat="ditem in itemlist">
+      <label class="item item-input">
+        <span class="input-label">{{ditem.itemName}}</span>
+        <span class="input-label" style="{{ditem.itemstyle}}">{{ditem.itemId}}</span>
+      </label>
+    </div>
+  </ion-content>
+</ion-view>

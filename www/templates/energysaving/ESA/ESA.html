@@ -1,0 +1,40 @@
+<ion-view ng-controller="ESAController as vm">
+    <!-- <ion-nav-bar class="bar-positive">
+        <ion-nav-buttons side="left">
+          <a class="new-buttons" href="#/energysaving">
+            <span class="left-img-button icon ion-ios-arrow-back"></span>
+          </a>
+        </ion-nav-buttons>
+	  </ion-nav-bar> -->
+	  <div class="bar bar-header bar-positive">
+		<button class="button button-light button-clear icon ion-ios-arrow-back left-img-button" ng-click="goBack()">
+		</button>
+		<h1 class="title">节能量完成情况预警</h1>
+	  </div>
+    <ion-content class="has-header">
+        <div class="row row-no-padding no-margin">
+            <div class="col col-100 energy-save-sub-title font-overflow">
+                <span>{{vm.city}}节能量完成情况</span>
+            </div>
+        </div>
+    	<div class="list new-chartBackgroundColor">
+            <ng-echarts class="col col-100 echarts echart-common-height" ec-config="vm.chartGlobalConfig" ec-option="vm.pieChart">
+            </ng-echarts>    		
+    	</div>
+    	<div class="energy-save-sub-title-2">
+    		<span>企业节能完成情况</span>
+    	</div>
+    	<div class="list" style="padding-left:30px;padding-right:30px;padding-top:0px;padding-bottom:0px" ng-repeat="item in vm.companys">
+    		<div class="row row-no-padding">
+    			<div class="col col-50 font-overflow" style="font-size:15px;font-weight:bold;min-height:40px;line-height:40px;" ng-click="showName('企业名称',item.company)"><span>{{item.company}}</span></div>
+    			<div class="col col-50" style="text-align:right;font-size:10px;color:#666666;height:40px;line-height:40px"><span>累计完成情况:{{item.ratio}}%</span></div>
+    		</div>
+    		<div class="row" style="padding:0px;padding-bottom:5px;border-color:#ebebeb;border-style:solid;border-bottom-width:1px;">
+    			<div class="row" style="padding-top:0px;height:10px;background-color:#c7c7c7;border-radius:15px;padding-left:0px;">
+    				<!-- <div style="padding:0px;background-color:#00b7ed;height:10px;border-radius:15px;"></div>
+    				<div style="padding:0px;height:10px;border-radius:15px;"></div> -->
+    			</div>
+    		</div>
+    	</div>
+    </ion-content>
+</ion-view>

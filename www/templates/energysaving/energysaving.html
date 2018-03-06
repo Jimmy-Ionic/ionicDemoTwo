@@ -1,0 +1,62 @@
+<ion-view ng-controller="energysavingController as vm">
+  <!-- <ion-nav-bar class="bar-positive">
+    <ion-nav-buttons side="left">
+      <a class="new-buttons" href="#/home/analyse">
+        <span class="left-img-button icon ion-ios-arrow-back"></span>
+      </a>
+    </ion-nav-buttons>
+  </ion-nav-bar> -->
+  <div class="bar bar-header bar-positive">
+    <button class="button button-light button-clear icon ion-ios-arrow-back left-img-button" ng-click="vm.fun.toAnalyse()">
+    </button>
+    <h1 class="title">节能量完成情况预警</h1>
+  </div>
+  <ion-content class="has-header">
+    <div class="list">
+      <div class="list tabs tabs-striped tabs-top common-tab-top">
+        <a id="thisYear" class="tab-item active" ng-click="vm.fun.tab(0)" style="height: 50px;line-height: 50px;max-width:500px; font-size: 15px;border-right: 1px solid rgb(192, 195, 194); color: rgb(51, 51, 51);">
+          <span>本年节能量完成情况</span>
+        </a>
+        <a id="fiveYear" class="tab-item" ng-click="vm.fun.tab(1)" style="height: 50px;line-height: 50px;max-width:500px;;border-left: 1px solid rgb(192, 195, 194); color: rgb(51, 51, 51);">
+          <span>{{vm.fiveYearTitle}}</span>
+        </a>
+      </div>
+      <div class="list row no-margin no-padding" style="height:220px;">
+        <ng-echarts id="dChartThisYear" class="col col-50 echarts" ec-config="vm.chartGlobalConfig" ec-option="vm.dChartThisYear"
+          style="height:200px">
+        </ng-echarts>
+        <ng-echarts id="dChartFiveYear" class="col col-50 echarts" ec-config="vm.chartGlobalConfig" ec-option="vm.dChartFiveYear"
+          style="height:200px">
+        </ng-echarts>
+      </div>
+      <div class="list row no-padding">
+        <div class="col col-50 text-center"></div>
+        <div class="col col-50 text-center common-xxsmall-unit">单位：万吨标煤</div>
+      </div>
+    </div>
+    <div class="list">
+      <div class="energy-save-sub-title-2" style="text-align:center;">
+        区域节能量完成情况
+        <!-- <span class="new-unit-title2">万吨标煤</span> -->
+      </div>
+      <div class="list">
+        <div class="item item-avatar item-icon-right" ng-repeat="list in vm.listData" type="item-text-wrap" ng-click="vm.fun.toESA(list.id)">
+          <img ng-src="assets/global/{{list.img}}" style="height:30px;width:30px;border-radius:5%">
+          <div class="row row-no-padding">
+            <div class="col col-50 font-overflow" style="color:#4d4d4d;font-size:10px">
+              <span>{{list.name}}</span>
+            </div>
+            <div class="col col-50 larm-ratio font-overflow" style="font-size:10px">
+              <span>累计完成比:{{list.percent}}</span>
+            </div>
+          </div>
+          <div class="row" style="height:7px !important;background-color:#c7c7c7;border-radius:15px;padding:0px">
+            <div id="{{list.id}}" style="width:{{list.percent}}%;"></div>
+          </div>
+          <i class="icon ion-chevron-right icon-accessory"></i>
+        </div>
+      </div>
+    </div>
+    </div>
+  </ion-content>
+</ion-view>

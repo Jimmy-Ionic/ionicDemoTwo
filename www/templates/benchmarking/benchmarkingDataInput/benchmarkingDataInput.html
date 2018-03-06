@@ -1,0 +1,26 @@
+<ion-view ng-controller="benchmarkingDataInputController as vm">
+  <!-- <ion-nav-bar class="bar-positive">
+    <ion-nav-buttons side="left">
+      <a class="new-buttons" href="#/benchmarking">
+        <span class="icon ion-ios-arrow-back left-img-button"></span>
+      </a>
+    </ion-nav-buttons>
+  </ion-nav-bar> -->
+  <div class="bar bar-header bar-positive">
+      <a class="button button-light button-clear icon ion-ios-arrow-back left-img-button" href="#/benchmarking">
+      </a>
+      <h1 class="title">数据录入</h1>
+  </div>
+  <ion-content class="has-header">
+    <div class="row border-bottom" ng-repeat="ditem in vm.itemlist">
+      <div class="col">
+        <div class="data-input-text" style="margin:0 auto;width:300px;">指标名称:{{ditem.itemName}}{{ditem.itemUn}}</div>
+            <input id="{{ditem.itemId}}" name="{{ditem.itemId}}" type="number" required 
+            style="margin:0 auto;width:300px;box-sizing: border-box;border-radius:4px;color:#6a6f77; border:1px solid #c8cccf;">
+      </div>
+    </div>
+    <div class="padding">
+      <a class="button button-block button-positive" ng-click="vm.fun.valueCol()">计算</a>
+    </div>
+  </ion-content>
+</ion-view>

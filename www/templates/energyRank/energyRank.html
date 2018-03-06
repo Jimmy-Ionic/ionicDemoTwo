@@ -1,0 +1,226 @@
+<ion-view ng-controller="energyRankController as vm">
+  <!-- <ion-nav-bar class="bar-positive">
+    <ion-nav-buttons side="left">
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <a class="new-buttons" href="#/search">
+        <i class="icon ion-ios-search-strong right-img-button"></i>
+      </a>
+    </ion-nav-buttons>
+  </ion-nav-bar> -->
+  <div class="bar bar-header bar-positive">
+    <button class="button button-light button-clear icon ion-ios-arrow-back left-img-button">
+    </button>
+    <h1 class="title">能耗公示</h1>
+    <a class="button button-light button-clear icon ion-ios-search-strong" href="#/search">
+    </a>
+  </div>
+  <ion-content class="has-header" has-supheader="false" overflow-scroll="true" style="overflow:auto;">
+    <ion-refresher on-refresh="vm.fun.doRefresh()" pulling-text="下拉刷新">
+    </ion-refresher>
+    <div class="has-border-bottom" style="background-color:#E6F2FF">
+      <div class="row" style="padding:10px 5px;">
+        <div class="col col-75 col-center" style="font-size:20px;color:#5E5E5E;font-weight:bold;">
+          {{vm.indexName}}
+        </div>
+        <div class="col col-25" style="font-size:13px;color:#86898D;padding-top:15px;">
+          {{vm.currentDate}}
+        </div>
+      </div>
+      <div class="row" style="padding-bottom:10px;">
+        <div class="col  col-center text-center" style="font-size:20px;color:#949494">
+          {{vm.totalValue}}
+          <span class="unit-medium" style="padding-top:55px;color:#000000;font-size:13px">
+            {{vm.indexUnit}}
+          </span>
+        </div>
+      </div>
+      <div class="row unit-medium" style="font-size:13px;padding-bottom:20px;">
+        <div class="col col-offset-20">
+          <div class="row row-no-padding">
+            <div class="col text-center" style="color:#000000">同比</div>
+            <div class="col text-center" ng-class="{true:'color-red',false:'color-green'}[vm.totalValueYOY>0]">{{vm.totalValueYOY}}</div>
+            <div class="col text-center" ng-class="{true:'ion-arrow-up-a color-red',false:'ion-arrow-down-a color-green'}[vm.totalValueYOY>0]"></div>
+            <div class="col text-center" style="color:#000000" ng-show="vm.timeType == 'month'">环比</div>
+            <div class="col text-center" ng-class="{true:'color-red',false:'color-green'}[vm.totalValueLRR>0]" ng-show="vm.timeType == 'month'">{{vm.totalValueLRR}}</div>
+            <div class="col text-center" ng-class="{true:'ion-arrow-up-a color-red',false:'ion-arrow-down-a color-green'}[vm.totalValueLRR>0]"
+              ng-show="vm.timeType == 'month'"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="list tabs tabs-striped tabs-top">
+      <a class="tab-item border-right" ng-class="{active:vm.choose=='area'}" ng-click="vm.fun.selectArea()">
+        <span style="color:#020202">区域</span>
+      </a>
+      <a class="tab-item border-left border-right" ng-class="{active:vm.choose=='industry'}" ng-click="vm.fun.selectIndustry()">
+        <span style="color:#020202">行业</span>
+      </a>
+      <a class="tab-item border-left" ng-class="{active:vm.choose=='enterprise'}" ng-click="vm.fun.selectEnterprise()">
+        <span style="color:#020202">企业</span>
+      </a>
+    </div>
+    <div ng-show="vm.choose == 'area'">
+      <ion-list>
+        <ion-item class="new-item" ng-repeat="item in vm.areaTitleList">
+          <div class="row text-center">
+            <div class="col col-10">
+              {{item.ranking}}
+            </div>
+            <div class="col col-30 font-overflow">
+              {{item.name}}
+            </div>
+            <div class="col col-30">
+              {{item.current}}
+            </div>
+            <div class="col col-20">
+              {{item.an}}
+            </div>
+            <div class="col col-20">
+              {{item.trend}}
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item class="new-item" ng-repeat="item in vm.areaValueList">
+          <div class="row text-center">
+            <div class="col col-10" ng-class="{'color-red':item.order==1}">
+              <div>
+                {{item.orderNo}}
+              </div>
+            </div>
+            <div class="col col-30 font-overflow" ng-click="vm.fun.showName(item.name,'area');">
+              {{item.name}}
+            </div>
+            <div class="col col-30">
+              {{item.value}}
+            </div>
+            <div ng-show="item.ratio != '-'" class="col col-20">
+              {{item.ratio}}%
+            </div>
+            <div ng-show="item.ratio == '-'" class="col col-20">
+              {{item.ratio}}
+            </div>
+            <div class="col col-20">
+              <!-- <span>{{item.orderChange}}</span> -->
+              <span ng-show="item.ratio != '-'" ng-class="{true:'ion-arrow-up-a color-red',false:'ion-arrow-down-a color-green'}[item.ratio>0]">
+                <span style="float:left">
+                </span>
+              </span>
+              <span ng-show="item.ratio == '-'">-</span>
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div ng-show="vm.choose == 'industry'">
+      <ion-list>
+        <ion-item class="new-item" ng-repeat="item in vm.industryTitleList">
+          <div class="row text-center">
+            <div class="col col-10">
+              {{item.ranking}}
+            </div>
+            <div class="col col-30 font-overflow">
+              {{item.name}}
+            </div>
+            <div class="col col-30">
+              {{item.current}}
+            </div>
+            <div class="col col-20">
+              {{item.an}}
+            </div>
+            <div class="col col-20">
+              {{item.trend}}
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item class="new-item" ng-repeat="item in vm.industryValueList">
+          <div class="row text-center">
+            <div class="col col-10" ng-class="{'color-red':item.order==1}">
+              <div>
+                {{item.orderNo}}
+              </div>
+            </div>
+            <div class="col col-30 font-overflow" ng-click="vm.fun.showName(item.name,'industry')">
+              {{item.name}}
+            </div>
+            <div class="col col-30">
+              {{item.value}}
+            </div>
+            <div ng-show="item.ratio != '-'" class="col col-20">
+              {{item.ratio}}%
+            </div>
+            <div ng-show="item.ratio == '-'" class="col col-20">
+              {{item.ratio}}
+            </div>
+            <div class="col col-20">
+              <!-- <span>{{item.orderChange}}</span> -->
+              <span ng-show="item.ratio != '-'" ng-class="{true:'ion-arrow-up-a color-red',false:'ion-arrow-down-a color-green'}[item.ratio>0]">
+                <span style="float:left">
+                </span>
+              </span>
+              <span ng-show="item.ratio == '-'">-</span>
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div ng-show="vm.choose == 'enterprise'">
+      <ion-list>
+        <ion-item class="new-item" ng-repeat="item in vm.enterpriseTitleList">
+          <div class="row text-center">
+            <div class="col col-10">
+              {{item.ranking}}
+            </div>
+            <div class="col col-30 font-overflow">
+              {{item.name}}
+            </div>
+            <div class="col col-30">
+              {{item.current}}
+            </div>
+            <div class="col col-20">
+              {{item.an}}
+            </div>
+            <div class="col col-20">
+              {{item.trend}}
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item class="new-item" ng-repeat="item in vm.enterpriseValueList">
+          <div class="row text-center">
+            <div class="col col-10" ng-class="{'color-red':item.order==1}">
+              <div>
+                {{item.orderNo}}
+              </div>
+            </div>
+            <div class="col col-30 font-overflow" ng-click="vm.fun.showName(item.name,'enterprise')">
+              {{item.name}}
+            </div>
+            <div class="col col-30">
+              {{item.value}}
+            </div>
+            <div ng-show="item.ratio !='-'" class="col col-20">
+              {{item.ratio}}%
+            </div>
+            <div ng-show="item.ratio == '-'" class="col col-20">
+              {{item.ratio}}
+            </div>
+            <div class="col col-20">
+              <!-- <span>{{item.orderChange}}</span> -->
+              <span ng-show="item.ratio !='-'" ng-class="{true:'ion-arrow-up-a color-red',false:'ion-arrow-down-a color-green'}[item.ratio>0]">
+                <span style="float:left">
+                </span>
+              </span>
+              <span ng-show="item.ratio == '-'"></span>
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-content>
+</ion-view>

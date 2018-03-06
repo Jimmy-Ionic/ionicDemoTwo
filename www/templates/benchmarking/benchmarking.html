@@ -1,0 +1,26 @@
+<ion-view ng-controller="benchmarkingController as vm">
+  <!-- <ion-nav-bar class="bar-positive">
+      <ion-nav-buttons side="left">
+          <a class="new-buttons" href="#/home/about">
+            <span class="icon ion-ios-arrow-back left-img-button"></span>
+          </a>
+      </ion-nav-buttons>
+    </ion-nav-bar> -->
+  <div class="bar bar-header bar-positive">
+    <a class="button button-light button-clear icon ion-ios-arrow-back left-img-button" href="#/home/about">
+    </a>
+    <h1 class="title">限额对标工具</h1>
+  </div>
+  <ion-content class="has-header">
+    <div class="bench-sub-title">
+      选择所属行业
+    </div>
+    <ion-list>
+      <ion-item class="item-avatar item-icon-right" name="{{list.id}}" ng-repeat="list in vm.listData" type="item-text-wrap" href="{{list.url}}"
+        ng-click="vm.fun.open({{list.id}})" style="height:50px !important;line-height:50px;border-bottom-color:#1c96e4;display:{{list.display}};">
+        <p style="font-size:13px;line-height:50px;padding-left:25px;color:{{list.fontColor}};">{{list.lastText}}</p>
+        <i ng-click="vm.fun.open({{list.id}})" ng-class="{true:'icon ion-chevron-down icon-accessory',false:''}[list.url=='']" style="font-size:13px;"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

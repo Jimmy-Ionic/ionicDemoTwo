@@ -1,0 +1,29 @@
+<ion-view ng-controller="aboutController as vm" title="对标" cache-view="true">
+	<div class="bar bar-header bar-positive">
+		<div class="title">对标</div>
+	</div>
+	<ion-content class="has-header">
+		<div class="row duibiao">
+			<div class="col col-center text-center" ng-click="vm.fun.toBench()">
+				<img ng-src="assets/global/img/benchmarking.png" />
+			</div>
+			<div class="col col-center text-center" ng-click="vm.fun.toCalculator()">
+				<img ng-src="assets/global/img/calculator.png" />
+			</div>
+			<div class="col col-center text-center" ng-click="vm.fun.toNews()">
+				<img ng-src="assets/global/img/news.png" />
+			</div>
+		</div>
+		<div class="row duibiao-font">
+			<div class="col col-center text-center" ng-click="vm.fun.toBench()">
+				能耗限额对标
+			</div>
+			<div class="col col-center text-center" ng-click="vm.fun.toCalculator()">
+				节能计算器
+			</div>
+			<div class="col col-center text-center" ng-click="vm.fun.toNews()">
+				节能小贴士
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

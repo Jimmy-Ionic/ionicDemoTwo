@@ -1,0 +1,107 @@
+<ion-view ng-controller="tradeAndRegionController as vm">
+  <!-- <ion-nav-bar class="bar-positive">
+    <ion-nav-buttons side="left">
+      <a class="new-buttons" href="" ng-click="vm.fun.goBack()">
+        <span class="left-img-button icon ion-ios-arrow-back"></span>
+      </a>
+    </ion-nav-buttons>
+  </ion-nav-bar> -->
+  <div class="bar bar-header bar-positive">
+      <button class="button button-light button-clear icon ion-ios-arrow-back left-img-button" ng-click="vm.fun.goBack()">
+      </button>
+      <h1 class="title">设置</h1>
+  </div>
+  <ion-content class="has-header">
+    <div class="list tabs tabs-striped tabs-top">
+      <a class="tab-item active" id="region" ng-click="vm.fun.tab(0)" style="max-width:500px;height:45px;line-height:45px;border-right:1px solid #c0c3c2;color:#333333">
+        区域
+      </a>
+      <a class="tab-item" id="trade" ng-click="vm.fun.tab(1)" style="max-width:500px;height:45px;line-height:45px;border-left:1px solid #c0c3c2;color:#333333">
+        行业
+      </a>
+    </div>
+    <div class="list">
+      <ion-slide-box on-slide-changed="vm.fun.slideChanged($index)" show-pager="false">
+        <ion-slide>
+          <div class="list">
+            <div class="row new-serch-input-padding" style="padding-top:0px;padding-bottom:0px">
+              <div class="list" style="width:100%;">
+                <label class="item item-input new-serch-label">
+                  <i class="icon ion-search placeholder-icon">
+                  </i>
+                  <input ng-model="vm.searchRegion" type="search"/>
+                </label>
+              </div>
+            </div>
+            <div class="col col-100" style="padding-top:0px;padding-bottom:0px;padding-right:20px;padding-left:20px">
+              <div ng-click="vm.fun.choose('region','','')" style="font-size:13px;border-style:solid;border-color:#c0c3c2;border-bottom-width:1px;line-height:50px;padding-top:0px;padding-bottom:0px;padding-right:0px;padding-left:0px;min-height:50px;">
+                全部
+              </div>
+              <div ng-click="vm.fun.choose('region',item.Id,item.Name)" ng-repeat="item in vm.regionList  | filter:vm.searchRegion | orderBy :'Code': reverse  track by $index"
+                style="height:50px;line-height:50px;font-size:13px;border-style:solid;border-color:#c0c3c2;border-bottom-width:1px;padding-top:0px;padding-bottom:0px;padding-right:0px;padding-left:0px;min-height:50px;">
+                {{item.Name}}
+              </div>
+            </div>
+          </div>
+        </ion-slide>
+        <ion-slide ng-hide="vm.pageIndex == 0">
+          <div class="list">
+            <div class="row new-serch-input-padding" style="padding-top:0px;padding-bottom:0px">
+              <div class="list " style="width:100%;">
+                <label class="item item-input new-serch-label">
+                  <i class="icon ion-search placeholder-icon">
+                  </i>
+                  <input ng-model="vm.searchTrade" type="search" ng-change="vm.fun.search()" />
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col text-center" style="font-weight:bold;">
+                重点行业
+              </div>
+            </div>
+            <div class="list">
+              <div class="row row-no-padding" style="background-color:#E9E9E9" ng-repeat="item1 in vm.keyTrade track by $index">
+                <div class="col col-30" ng-class="{'tab-choose':vm.trade==item.id}" ng-click="vm.fun.choose('trade',item.id,item.name)" ng-repeat="item in item1 track by $index"
+                  style="height:50px;text-align:center;min-height:50px;font-size:13px;border:1px solid lightgray;margin:10px 20px;background-color:#f2f5f5;padding:5px!important;">
+                  {{item.name}}
+                </div>
+              </div>
+            </div>
+            <div ng-show="!vm.showMatchingTrade" class="col col-100" style="padding-top:0px;padding-bottom:0px;padding-right:20px;padding-left:20px;">
+              <div ng-click="vm.fun.choose('trade','','')" style="height:50px;font-size:13px;border-style:solid;border-color:#c0c3c2;border-bottom-width:1px;line-height:50px;padding-top:0px;padding-bottom:0px;padding-right:0px;padding-left:0px;min-height:50px;">
+                全部
+              </div>
+              <!-- <div class="item-list" ng-class="{'tab-choose':vm.trade==item.id}" ng-click="vm.choose('trade',item.id,item.name)" ng-repeat="item in vm.tradeList |filter:vm.searchTrade|orderBy :''" style="font-size:14px;">
+                                {{item.name}}
+                            </div>
+                -->
+              <div ng-repeat="index in vm.indexs">
+                <div ng-show="item.index==index" ng-click="vm.fun.choose('trade',item.id,item.name)" ng-repeat="item in vm.tradeList track by $index"
+                  style="height:50px;font-size:13px;border-style:solid;border-color:#c0c3c2;border-bottom-width:1px;line-height:50px;padding-top:0px;padding-bottom:0px;padding-right:0px;padding-left:0px;min-height:50px;">
+                  <span ng-show="item.first" class="color-green" style="font-size:13px;font-weight:bold;">{{index}}</span> {{item.name}}
+                </div>
+              </div>
+            </div>
+            <div ng-show="vm.showMatchingTrade" class="col col-100" style="padding-top:0px;padding-bottom:0px;padding-right:20px;padding-left:20px;">
+                <div ng-click="vm.fun.choose('trade','','')" style="height:50px;font-size:13px;border-style:solid;border-color:#c0c3c2;border-bottom-width:1px;line-height:50px;padding-top:0px;padding-bottom:0px;padding-right:0px;padding-left:0px;min-height:50px;">
+                  全部
+                </div>
+                <!-- <div class="item-list" ng-class="{'tab-choose':vm.trade==item.id}" ng-click="vm.choose('trade',item.id,item.name)" ng-repeat="item in vm.tradeList |filter:vm.searchTrade|orderBy :''" style="font-size:14px;">
+                                  {{item.name}}
+                              </div>
+                  -->
+                <div ng-repeat="index in vm.indexs">
+                  <div ng-show="item.index==index" ng-click="vm.fun.choose('trade',item.id,item.name)" ng-repeat="item in vm.matchingTradeList track by $index"
+                    style="height:50px;font-size:13px;border-style:solid;border-color:#c0c3c2;border-bottom-width:1px;line-height:50px;padding-top:0px;padding-bottom:0px;padding-right:0px;padding-left:0px;min-height:50px;">
+                    <span ng-show="item.first" class="color-green" style="font-size:13px;font-weight:bold;">{{index}}</span> {{item.name}}
+                  </div>
+                </div>
+              </div>
+          </div>
+        </ion-slide>
+      </ion-slide-box>
+    </div>
+  </ion-content>
+</ion-view>
+

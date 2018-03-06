@@ -1,0 +1,110 @@
+<ion-view ng-controller="newsController as vm">
+    <!-- <ion-nav-bar class="bar-positive">
+        <ion-nav-buttons side="left">
+            <a class="new-buttons" ng-click="vm.fun.clickBack()">
+                <i class="left-img-button icon ion-ios-arrow-back"></i>
+            </a>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <a class="new-buttons" ng-click="vm.fun.search()">
+                <i class="right-img-button icon ion-ios-search-strong"></i>
+            </a>
+        </ion-nav-buttons>
+    </ion-nav-bar> -->
+    <div class="bar bar-header bar-positive">
+        <button class="button button-light button-clear icon ion-ios-arrow-back left-img-button" ng-click="vm.fun.clickBack()">
+        </button>
+        <h1 class="title">节能小贴士</h1>
+        <button class="button button-light button-clear icon ion-ios-search-strong" ng-click="vm.fun.search()">
+        </button>
+    </div>
+    <ion-content class="has-header">
+        <ion-refresher pulling-text="下拉刷新..." on-refresh="vm.fun.doRefresh()">
+        </ion-refresher>
+        <div ng-show="vm.searchShow">
+            <div class="list list-inset border no-padding">
+                <label class="item item-input">
+                    <i class="icon ion-search placeholder-icon"></i>
+                    <input id="newsName" type="search" ng-model="vm.searchNewsName" ng-change="vm.fun.matchingNews()" placeholder="请输入要查询的新闻名称">
+                </label>
+            </div>
+            <div class="list list-inset">
+                <a class="item no-padding" style="border-width:0px;" href="" ng-repeat="item in vm.searchNewsList" ng-click="vm.fun.toNewsContent(item.id)">
+                    <div class="row">
+                        <div class="col col-center" style="width:90px;padding:5px;">
+                            <img src="assets/global/img/b.png" style="height:60px;width:80px;">
+                        </div>
+                        <div style="padding:5px;margin-left:10px;">
+                            <div style="font-size:13px;font-weight:bold;white-space:normal">{{item.title}}</div>
+                            <p style="font-size:10px;color:#666666;margin-top:20px;white-space:normal">{{item.createTime}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div ng-show="!vm.searchShow">
+            <div class="list tabs tabs-striped tabs-top common-tab-top">
+                <a class="tab-item common-tab-item active" id="JNJS" ng-click="vm.fun.chooseContent(0)" style="max-width:500px;border-right-style:solid;border-right-width:1px;border-right-color:#c0c3c2;color:#333333">
+                    <span>节能技术</span>
+                </a>
+                <a class="tab-item common-tab-item" id="JNAL" ng-click="vm.fun.chooseContent(1)" style="max-width:500px;border-left-style:solid;border-left-width:1px;border-left-color:#c0c3c2;color:#333333">
+                    <span>节能案例</span>
+                </a>
+            </div>
+            <div class="list">
+                <ion-slide-box show-pager="false" delegate-handle="content" id="content">
+                    <ion-slide>
+                        <div class="list" style="line-height:0px">
+                            <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)" class="slidebox" auto-play="true" slide-interval="4000"
+                                delegate-handle="slideimgs" does-continue="true">
+                                <ion-slide style="padding-bottom:0px" ng-repeat="path in vm.slideImgPathList">
+                                    <a>
+                                        <img src="{{path}}" style="height:160px;width:100%;">
+                                    </a>
+                                </ion-slide>
+                            </ion-slide-box>
+                        </div>
+                        <div class="list">
+                            <a class="item no-padding" href="" ng-repeat="item in vm.tecNews" ng-click="vm.fun.toNewsContent(item.id)">
+                                <div class="row">
+                                    <div class="col col-center" style="width:90px;padding:5px;">
+                                        <img src="assets/global/img/b.png" style="height:60px;width:80px;">
+                                    </div>
+                                    <div style="padding:5px;margin-left:10px;">
+                                        <div style="font-size:13px;font-weight:bold;white-space:normal">{{item.title}}</div>
+                                        <p style="font-size:10px;color:#666666;margin-top:20px;white-space:normal">{{item.createTime}}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="list" style="line-height:0px">
+                            <ion-slide-box show-pager="true" on-slide-changed="slideHasChanged($index)" class="slidebox" auto-play="true" slide-interval="4000"
+                                delegate-handle="slideimgs" does-continue="true">
+                                <ion-slide style="padding-bottom:0px" ng-repeat="path in vm.slideImgPathList">
+                                    <a>
+                                        <img src="{{path}}" style="height:160px;width:100%;">
+                                    </a>
+                                </ion-slide>
+                            </ion-slide-box>
+                        </div>
+                        <div class="list">
+                            <a class="item no-padding" href="" ng-repeat="item in vm.news" ng-click="vm.fun.toNewsContent(item.id)">
+                                <div class="row">
+                                    <div class="col col-center" style="width:90px;padding:5px;">
+                                        <img src="assets/global/img/b.png" style="height:60px;width:80px;">
+                                    </div>
+                                    <div style="padding:5px;margin-left:10px;">
+                                        <h2 style="font-size:13px;font-weight:bold;white-space:normal">{{item.title}}</h2>
+                                        <p style="font-size:10px;color:#666666;margin-top:20px;">{{item.createTime}}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </ion-slide>
+                </ion-slide-box>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

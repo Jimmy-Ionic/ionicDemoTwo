@@ -1,0 +1,64 @@
+<ion-view ng-controller="consumptionSearchController as vm">
+    <!-- <ion-nav-bar class="bar-positive">
+        <ion-nav-buttons side="left">
+            <a class="new-buttons" ng-click="goBack()">
+                <i class="left-img-button icon ion-ios-arrow-back"></i>
+            </a>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <a class="new-buttons" ng-click="vm.fun.confirm()">
+                <i class="right-text-button">确定</i>
+            </a>
+        </ion-nav-buttons>
+    </ion-nav-bar> -->
+    <div class="bar bar-header bar-positive">
+        <button class="button button-light button-clear icon ion-ios-arrow-back left-img-button" ng-click="goBack()">
+        </button>
+        <h1 class="title">查询</h1>
+        <button class="button button-light button-clear" style="font-size:15px;color:#ffffff;" ng-click="vm.fun.confirm()">确定
+        </button>
+    </div>
+    <ion-content class="has-header" has-supheader="false">
+        <div id="consumptionSearchDatePicker">
+            <div class="row padding">
+                <div class="col col-80 border text-center col-center">
+                    <div style="height:35px;line-height:35px;">{{vm.currentDate}}</div>
+                </div>
+                <div class="col border text-center col-center" style="margin-left:20px;" ng-click="vm.fun.showcalender()">
+                    <div style="height:35px;line-height:35px;">
+                        <i class="icon ion-ios-calendar-outline icon-middle"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row padding">
+            <div class="col no-padding">
+                <div class="list border">
+                    <label class="item item-input">
+                        <i class="icon ion-search placeholder-icon"></i>
+                        <input id="enterpriseName" type="search" ng-model="vm.enterpriseName" ng-change="vm.fun.matchingEnterprise()" placeholder="请输入要查看的企业名称">
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <i style="color:#A1A1A1">所有企业</i>
+            </div>
+        </div>
+        <ion-list ng-show="vm.showAreaEnterprise">
+            <item class="item item-icon-right" ng-repeat="item in vm.listData" name="{{item.areaId}}" type="item-text-wrap" href="" ng-click="vm.fun.open(item)"
+                ng-class="{true:'bg-color-d9d9d9',false:''}[!item.isTitle&&item.name == vm.judgeName]" style="display:{{item.display}}">
+                <p style="color:{{item.fontColor}};padding-left:{{item.paddingLeft}}px;">{{item.name}}</p>
+                <i ng-class="{true:'icon ion-chevron-down',false:''}[item.isTitle]" style="font-size:10px;"></i>
+                </ion-item>
+        </ion-list>
+        <ion-list ng-show="vm.showMatchingEnterprise">
+            <ion-item class="item" ng-repeat="item in vm.matchingEnterpriseList" style="background-color:#e8ede9;" ng-click="vm.fun.sendData(item)">
+                <a class="item-content" ng-href="">
+                    <i style="color:{{item.fontColor}};font-size:14px;padding-left:5px;">{{item.name}}</i>
+                </a>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

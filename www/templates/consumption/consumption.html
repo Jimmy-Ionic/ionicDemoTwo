@@ -1,0 +1,77 @@
+<ion-view ng-controller="consumptionController as vm">
+    <!-- <ion-nav-bar class="bar-positive">
+        <ion-nav-buttons side="left">
+            <a class="new-buttons" href="#/home/analyse">
+                <span class="left-img-button icon ion-ios-arrow-back"></span>
+            </a>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <a class="new-buttons" href="#/consumptionSearch/{{vm.indexId}}/{{vm.indexName}}/{{vm.indexType}}">
+                <span class="icon ion-ios-search-strong right-img-button"></span>
+            </a>
+        </ion-nav-buttons>
+    </ion-nav-bar> -->
+    <div class="bar bar-header bar-positive">
+            <a class="button button-light button-clear icon ion-ios-arrow-back left-img-button" href="#/home/analyse">
+            </a>
+            <h1 class="title">产值单耗分析</h1>
+            <a class="button button-light button-clear icon ion-ios-search-strong" href="#/consumptionSearch/{{vm.indexId}}/{{vm.indexName}}/{{vm.indexType}}">
+            </a>
+        </div>
+    <ion-content class="has-header" has-supheader="false" overflow-scroll="true" style="overflow:auto;">
+        <div class="row">
+            <div class="col col-75 col-center" style="font-size:15px;color:#5E5E5E;font-weight:bold;">
+                {{vm.indexName}}
+            </div>
+            <div class="col col-25" style="font-size:13px;color:#86898D;">
+                {{vm.currentDate}}
+            </div>
+        </div>
+        <!-- <div class="tabs tabs-striped tabs-top new-tab-top" style="height: 41.0156px; font-size: 8.20313px; line-height: 28.7109px; padding: 0px; margin: 0px;">
+	        <a class="tab-item button-full active new-tab-item" id="this_year" ng-click="vm.changeTab('month')" style="max-width: 400px; height: 41.0156px; font-size: 17.5781px; line-height: 41.0156px; padding: 0px; margin: 0.585938px 0px 0px;">
+	          <span>月度</span>
+	        </a>
+	        <a class="tab-item button-full new-tab-item" id="five_year" ng-click="vm.changeTab('year')" style="max-width: 400px; height: 41.0156px; font-size: 17.5781px; line-height: 41.0156px; padding: 0px; margin: 0px;">
+	          <span class="ng-binding">年度</span>
+	        </a>
+	    </div> -->
+        <div class="has-border-bottom" id="monthTab" style="background-color:#E6F2FF">
+            <div class="row">
+                <div class="col col-40 col-center" style="font-size:15px;color:#5E5E5E;font-weight:bold;">万元产值综合能耗</div>
+                <div class="col" style="font-size:10px;color:#86898D;">
+                    <div class="row row-no-padding">
+                        <div class="col text-center" style="color:#000000">同比</div>
+                        <div class="col text-center" ng-class="{true:'color-red',false:'color-green'}[vm.energyConsumptionValueYOY>0]">{{vm.energyConsumptionValueYOY}}%</div>
+                        <i class="col text-center" ng-class="{true:'ion-arrow-up-a color-red',false:'ion-arrow-down-a color-green'}[vm.energyConsumptionValueYOY>0]"></i>
+                        <div class="col text-center" style="color:#000000" ng-hide="vm.timeType == 'year'">环比</div>
+                        <div ng-hide="vm.timeType == 'year'" class="col text-center" ng-class="{true:'color-red',false:'color-green'}[vm.energyConsumptionValueLRR>0]">{{vm.energyConsumptionValueLRR}}%</div>
+                        <i ng-hide="vm.timeType == 'year'" class="col text-center" ng-class="{true:'ion-arrow-up-a color-red',false:'ion-arrow-down-a color-green'}[vm.energyConsumptionValueLRR>0]"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <span style="font-size:20px;color:#5E5E5E;font-weight:bold;">{{vm.energyConsumptionValue}}</span>
+                    &nbsp;
+                    <span style="color:#000000;font-size:10px">吨标准煤/万元</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-40 col-center" style="font-size:15px;color:#5E5E5E;font-weight:bold;">
+                    万元产值电耗
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center" style="font-size:13px;color:#86898D;">
+                    <span style="font-size:20px;color:#949494;font-weight:bold;">{{vm.powerConsumptionValue}}</span>
+                    &nbsp;
+                    <span style="color:#000000;font-size:10px">万千瓦时/万元</span>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="height: 300px;max-height:350px;">
+            <ng-echarts id="consumptionCharts" class="col echarts" ec-config="vm.chartGlobalConfig" ec-option="vm.chartsOption">
+            </ng-echarts>
+        </div>
+    </ion-content>
+</ion-view>

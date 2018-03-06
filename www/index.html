@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta content="script-src * 'unsafe-eval'; connect-src * 'unsafe-eval'; object-src 'self'; style-src * 'unsafe-inline'; img-src *">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, minimum-scale=1.0">
+  <!-- <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/> -->
+  <meta http-equiv="Content-Security-Policy" content="default-src https://codepush.azurewebsites.net * data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *"
+  />
+  <title>齐齐哈尔市重点企业能耗在线监测预警平台</title>
+
+  <!-- inject:css -->
+  <link rel="stylesheet" href="lib/ionic/css/ionic.app.css">
+  <link rel="stylesheet" href="lib/jstree/css/style.min.css">
+  <!-- <link rel="stylesheet" href="lib/jstree/css/font-awesome.min.css"> -->
+  <!-- <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css"> -->
+  <!-- endinject -->
+</head>
+
+<body ng-app="app">
+  <!--
+      The nav bar that will be updated as we navigate between views.
+    -->
+
+  <!--
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+  <ion-nav-view></ion-nav-view>
+
+  <!-- ionic/angularjs js -->
+  <script src="lib/md5.js"></script>
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+  <script src="lib/moment/min/moment-with-locales.min.js"></script>
+  <script src="lib/lodash/dist/lodash.min.js"></script>
+  <script src="lib/ngstorage/ngStorage.min.js"></script>
+  <script src="lib/echarts/dist/echarts.min.js"></script>
+  <script src="lib/echarts/theme/shine.js"></script>
+  <script src="lib/bower-ng-echarts/dist/ng-echarts.js"></script>
+  <!--时间插件-->
+  <script src="lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script>
+  <!--时间插件-->
+  <script src="lib/onezone-datepicker/dist/onezone-datepicker.min.js"></script>
+  <!--月份选择插件-->
+  <script src="lib/ionic-monthpicker/src/ionic-monthpicker.module.js"></script>
+  <script src="lib/ionic-monthpicker/src/ionic-monthpicker.factory.js"></script>
+  <!--树结构插件-->
+  <script src="lib/ion-tree-list/ion-tree-list.js"></script>
+  <!--jquery插件-->
+  <script src="lib/jquery/dist/jquery.js"></script>
+  <!--bootstrap树形结构-->
+  <script src="lib/bootstrap-treeview/src/js/bootstrap-treeview.js"></script>
+  <!-- cordova script (this will be a 404 during development) -->
+  <script src="cordova.js"></script>
+
+  <!-- inject:js -->
+  <script src="js/app.js"></script>
+
+  <!-- jsTree -->
+  <script src="lib/jstree/jstree.min.js"></script>
+  <!--各个模块的module js文件-->
+  <script src="templates/about/about.module.js"></script>
+  <script src="templates/analyse/analyse.module.js"></script>
+  <script src="templates/calculator/calculator.module.js"></script>
+  <script src="templates/ECA/ECA.module.js"></script>
+  <script src="templates/energyRank/energyRank.module.js"></script>
+  <script src="templates/consumption/consumption.module.js"></script>
+  <script src="templates/energysaving/energysaving.module.js"></script>
+  <script src="templates/energysaving/ESA/ESA.module.js"></script>
+  <script src="templates/home/home.module.js"></script>
+  <script src="templates/login/login.module.js"></script>
+  <script src="templates/news/news.module.js"></script>
+  <script src="templates/setting/setting.module.js"></script>
+  <script src="templates/ECA/ECAson/ECAson.module.js"></script>
+  <script src="templates/ECA/tradeAndRegion/tradeAndRegion.module.js"></script>
+  <script src="templates/energyRank/search/search.module.js"></script>
+  <script src="templates/energyMonitor/energyMonitor.module.js"></script>
+  <script src="templates/energyMonitor/energyMonitorSearch/energyMonitorSearch.module.js"></script>
+  <script src="templates/consumption/consumptionSearch/consumptionSearch.module.js"></script>
+  <script src="templates/benchmarking/benchmarking.module.js"></script>
+  <script src="templates/benchmarking/benchmarkingDataInput/benchmarkingDataInput.module.js"></script>
+  <script src="templates/benchmarking/valueShow/valueShow.module.js"></script>
+  <script src="templates/benchmarking/quotaBenchmarkingSet/quotaBenchmarkingSet.module.js"></script>
+  <script src="templates/benchmarking/quotaBenchmarkingRealTime/quotaBenchmarkingRealTime.module.js"></script>
+  <script src="templates/news/newsContent/newsContent.module.js"></script>
+  <!--各个模块控制器、服务等js文件-->
+  <script src="templates/about/about.controller.js"></script>
+  <script src="templates/about/about.route.js"></script>
+  <script src="templates/about/about.service.js"></script>
+  <script src="templates/analyse/analyse.controller.js"></script>
+  <script src="templates/analyse/analyse.route.js"></script>
+  <script src="templates/analyse/analyse.service.js"></script>
+  <script src="templates/calculator/calculator.controller.js"></script>
+  <script src="templates/calculator/calculator.route.js"></script>
+  <script src="templates/ECA/ECA.controller.js"></script>
+  <script src="templates/ECA/ECA.route.js"></script>
+  <script src="templates/ECA/ECA.service.js"></script>
+  <script src="templates/energyRank/energyRank.controller.js"></script>
+  <script src="templates/energyRank/energyRank.route.js"></script>
+  <script src="templates/energyRank/energyRank.service.js"></script>
+  <script src="templates/energysaving/energysaving.route.js"></script>
+  <script src="templates/energysaving/energysaving.controller.js"></script>
+  <script src="templates/energysaving/energysaving.service.js"></script>
+  <script src="templates/energysaving/ESA/ESA.controller.js"></script>
+  <script src="templates/energysaving/ESA/ESA.route.js"></script>
+  <script src="templates/energysaving/ESA/ESA.service.js"></script>
+  <script src="templates/home/home.controller.js"></script>
+  <script src="templates/home/home.route.js"></script>
+  <script src="templates/home/home.service.js"></script>
+  <script src="templates/login/login.controller.js"></script>
+  <script src="templates/login/login.route.js"></script>
+  <script src="templates/login/login.service.js"></script>
+  <script src="templates/news/news.controller.js"></script>
+  <script src="templates/news/news.route.js"></script>
+  <script src="templates/news/news.service.js"></script>
+  <script src="templates/setting/setting.controller.js"></script>
+  <script src="templates/setting/setting.route.js"></script>
+  <script src="templates/setting/setting.service.js"></script>
+  <script src="templates/ECA/ECAson/ECAson.controller.js"></script>
+  <script src="templates/ECA/ECAson/ECAson.route.js"></script>
+  <script src="templates/ECA/ECAson/ECAson.service.js"></script>
+  <script src="templates/ECA/tradeAndRegion/tradeAndRegion.controller.js"></script>
+  <script src="templates/ECA/tradeAndRegion/tradeAndRegion.route.js"></script>
+  <script src="templates/ECA/tradeAndRegion/tradeAndRegion.service.js"></script>
+  <script src="templates/energyRank/search/search.controller.js"></script>
+  <script src="templates/energyRank/search/search.service.js"></script>
+  <script src="templates/energyRank/search/search.route.js"></script>
+  <script src="templates/energyMonitor/energyMonitor.controller.js"></script>
+  <script src="templates/energyMonitor/energyMonitor.service.js"></script>
+  <script src="templates/energyMonitor/energyMonitor.route.js"></script>
+  <script src="templates/energyMonitor/energyMonitorSearch/energyMonitorSearch.controller.js"></script>
+  <script src="templates/energyMonitor/energyMonitorSearch/energyMonitorSearch.service.js"></script>
+  <script src="templates/energyMonitor/energyMonitorSearch/energyMonitorSearch.route.js"></script>
+  <script src="templates/consumption/consumptionSearch/consumptionSearch.controller.js"></script>
+  <script src="templates/consumption/consumptionSearch/consumptionSearch.service.js"></script>
+  <script src="templates/consumption/consumptionSearch/consumptionSearch.route.js"></script>
+  <script src="templates/consumption/consumption.controller.js"></script>
+  <script src="templates/consumption/consumption.route.js"></script>
+  <script src="templates/consumption/consumption.service.js"></script>
+  <script src="templates/benchmarking/benchmarking.controller.js"></script>
+  <script src="templates/benchmarking/benchmarking.service.js"></script>
+  <script src="templates/benchmarking/benchmarking.route.js"></script>
+  <script src="templates/benchmarking/benchmarkingDataInput/benchmarkingDataInput.controller.js"></script>
+  <script src="templates/benchmarking/benchmarkingDataInput/benchmarkingDataInput.service.js"></script>
+  <script src="templates/benchmarking/benchmarkingDataInput/benchmarkingDataInput.route.js"></script>
+  <script src="templates/benchmarking/valueShow/valueShow.controller.js"></script>
+  <script src="templates/benchmarking/valueShow/valueShow.service.js"></script>
+  <script src="templates/benchmarking/valueShow/valueShow.route.js"></script>
+  <script src="templates/benchmarking/quotaBenchmarkingSet/quotaBenchmarkingSet.controller.js"></script>
+  <script src="templates/benchmarking/quotaBenchmarkingSet/quotaBenchmarkingSet.service.js"></script>
+  <script src="templates/benchmarking/quotaBenchmarkingSet/quotaBenchmarkingSet.route.js"></script>
+  <script src="templates/benchmarking/quotaBenchmarkingRealTime/quotaBenchmarkingRealTime.controller.js"></script>
+  <script src="templates/benchmarking/quotaBenchmarkingRealTime/quotaBenchmarkingRealTime.service.js"></script>
+  <script src="templates/benchmarking/quotaBenchmarkingRealTime/quotaBenchmarkingRealTime.route.js"></script>
+  <script src="templates/news/newsContent/newsContent.controller.js"></script>
+  <script src="templates/news/newsContent/newsContent.route.js"></script>
+  <script src="templates/news/newsContent/newsContent.service.js"></script>
+  <!-- endinject -->
+
+  
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<ion-view ng-controller="calculatorController as vm">
+    <!-- <ion-nav-bar class="bar-positive">
+            <ion-nav-buttons side="left">
+                <a class="new-buttons" href="#/home/about">
+                    <i class="left-img-button icon ion-ios-arrow-back"></i>
+                </a>
+            </ion-nav-buttons>
+        </ion-nav-bar> -->
+    <div class="bar bar-header bar-positive">
+        <a class="button button-light button-clear icon ion-ios-arrow-back left-img-button" href="#/home/about">
+        </a>
+        <h1 class="title">节能计算器</h1>
+    </div>
+    <ion-content class="has-header">
+        <div class="list">
+            <div class="row" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;height:{{vm.scalenum*140}}px;background-color:#F3F4F6">
+                <div class="col" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:{{vm.scalenum*28}}px;font-size:{{vm.scalenum*24}}px;color:#0a537e;line-height:{{vm.scalenum*100}}px">
+                    用能:
+                </div>
+                <div class="col" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">
+                    <div class="row" style="padding-top:{{vm.scalenum*15}}px;padding-right:{{vm.scalenum*18}}px;padding-bottom:{{vm.scalenum*15}}px;padding-left:{{vm.scalenum*18}}px;height:{{vm.scalenum*100}}px;text-align:center"
+                        ng-click="vm.clickE()">
+                        <div id="E" style="background-color:#64a64f;height:{{vm.scalenum*70}}px;width:{{vm.scalenum*70}}px;border-radius:100px;line-height:{{vm.scalenum*70}}px;font-size:{{vm.scalenum*24}}px;color:white">电</div>
+                    </div>
+                    <div class="row" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;height:{{vm.scalenum*40}}px">
+                        <div class="col" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;text-align:center;font-size:{{vm.scalenum*18}}px;color:#666666">用电</div>
+                    </div>
+                </div>
+                <div class="col" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">
+                    <div class="row" style="padding-top:{{vm.scalenum*15}}px;padding-right:{{vm.scalenum*18}}px;padding-bottom:{{vm.scalenum*15}}px;padding-left:{{vm.scalenum*18}}px;height:{{vm.scalenum*100}}px;text-align:center"
+                        ng-click="vm.clickC()">
+                        <div id="C" style="background-color:#0b5182;height:{{vm.scalenum*70}}px;width:{{vm.scalenum*70}}px;border-radius:100px;line-height:{{vm.scalenum*70}}px;font-size:{{vm.scalenum*24}}px;color:white">煤</div>
+                    </div>
+                    <div class="row" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;height:{{vm.scalenum*40}}px">
+                        <div class="col" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;text-align:center;font-size:{{vm.scalenum*18}}px;color:#666666">用煤</div>
+                    </div>
+                </div>
+                <div class="col" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">
+                    <div class="row" style="padding-top:{{vm.scalenum*15}}px;padding-right:{{vm.scalenum*18}}px;padding-bottom:{{vm.scalenum*15}}px;padding-left:{{vm.scalenum*18}}px;height:{{vm.scalenum*100}}px;text-align:center"
+                        ng-click="vm.clickG()">
+                        <div id="G" style="background-color:#0b5182;height:{{vm.scalenum*70}}px;width:{{vm.scalenum*70}}px;border-radius:100px;line-height:{{vm.scalenum*70}}px;font-size:{{vm.scalenum*24}}px;color:white">气</div>
+                    </div>
+                    <div class="row" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;height:{{vm.scalenum*40}}px">
+                        <div class="col" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;text-align:center;font-size:{{vm.scalenum*18}}px;color:#666666">天然气</div>
+                    </div>
+                </div>
+                <div class="col" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">
+                    <div class="row" style="padding-top:{{vm.scalenum*15}}px;padding-right:{{vm.scalenum*18}}px;padding-bottom:{{vm.scalenum*15}}px;padding-left:{{vm.scalenum*18}}px;height:{{vm.scalenum*100}}px;text-align:center"
+                        ng-click="vm.clickO()">
+                        <div id="O" style="background-color:#0b5182;height:{{vm.scalenum*70}}px;width:{{vm.scalenum*70}}px;border-radius:100px;line-height:{{vm.scalenum*70}}px;font-size:{{vm.scalenum*24}}px;color:white">油</div>
+                    </div>
+                    <div class="row" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;height:{{vm.scalenum*40}}px">
+                        <div class="col" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;text-align:center;font-size:{{vm.scalenum*18}}px;color:#666666">石油</div>
+                    </div>
+                </div>
+                <div class="col" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">
+                    <div class="row" style="padding-top:{{vm.scalenum*15}}px;padding-right:{{vm.scalenum*18}}px;padding-bottom:{{vm.scalenum*15}}px;padding-left:{{vm.scalenum*18}}px;height:{{vm.scalenum*100}}px;text-align:center"
+                        ng-click="vm.clickK()">
+                        <div id="K" style="background-color:#0b5182;height:{{vm.scalenum*70}}px;width:{{vm.scalenum*70}}px;border-radius:100px;line-height:{{vm.scalenum*70}}px;font-size:{{vm.scalenum*24}}px;color:white">煤气</div>
+                    </div>
+                    <div class="row" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;height:{{vm.scalenum*40}}px">
+                        <div class="col" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;text-align:center;font-size:{{vm.scalenum*18}}px;color:#666666">煤气</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="list">
+            <div class="row" style="padding-top:{{vm.scalenum*12}}px;padding-right:0px;padding-bottom:{{vm.scalenum*12}}px;padding-left:0px;height:{{vm.scalenum*70}}px;background-color:#64a64f">
+                <div class="col-20" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:{{vm.scalenum*28}}px;line-height:{{vm.scalenum*46}}px;font-size:{{vm.scalenum*24}}px;color:white">{{vm.tip}}:</div>
+                <div class="col-60" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">
+                    <input id="calculateValue" type="number" style="height:{{vm.scalenum*46}}px;width:100%;text-align:center;font-size:{{vm.scalenum*24}}px">
+                </div>
+                <div class="col-20" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;line-height:{{vm.scalenum*46}}px;font-size:{{vm.scalenum*24}}px;text-align:center;color:white">{{vm.unit}}</div>
+            </div>
+        </div>
+        <div class="list">
+            <div class="row" style="padding-top:{{vm.scalenum*30}}px;padding-right:{{vm.scalenum*190}}px;padding-bottom:{{vm.scalenum*30}}px;padding-left:{{vm.scalenum*190}}px;height:{{vm.scalenum*100}}px;background-color:#f3f4f6">
+                <div style="height:{{vm.scalenum*40}}px;background-color:#64a64f;width:100%;font-size:{{vm.scalenum*24}}px;color:white;line-height:{{vm.scalenum*40}}px;text-align:center;border-radius:{{vm.scalenum*20}}px"
+                    ng-click="vm.calculate()">马上计算</div>
+            </div>
+        </div>
+        <div class="list" style="height:{{vm.scalenum*60}}px;background-color:#f5f7f4;border-color:white;border-style:solid;border-bottom-width:1px;font-size:{{vm.scalenum*24}}px;line-height:{{vm.scalenum*60}}px;padding-left:{{vm.scalenum*28}}px"
+            ng-show="vm.isShowE()">
+            用电排放CO
+            <sub>2</sub>:&nbsp;&nbsp;&nbsp;&nbsp;{{vm.E}}&nbsp;&nbsp;公斤
+        </div>
+        <div class="list" style="height:{{vm.scalenum*60}}px;background-color:#f5f7f4;border-color:white;border-style:solid;border-bottom-width:1px;font-size:{{vm.scalenum*24}}px;line-height:{{vm.scalenum*60}}px;padding-left:{{vm.scalenum*28}}px"
+            ng-show="vm.isShowC()">
+            用煤排放CO
+            <sub>2</sub>:&nbsp;&nbsp;&nbsp;&nbsp;{{vm.C}}&nbsp;&nbsp;公斤
+        </div>
+        <div class="list" style="height:{{vm.scalenum*60}}px;background-color:#f5f7f4;border-color:white;border-style:solid;border-bottom-width:1px;font-size:{{vm.scalenum*24}}px;line-height:{{vm.scalenum*60}}px;padding-left:{{vm.scalenum*28}}px"
+            ng-show="vm.isShowG()">
+            用天然气排放CO
+            <sub>2</sub>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{vm.G}}&nbsp;&nbsp;公斤
+        </div>
+        <div class="list" style="height:{{vm.scalenum*60}}px;background-color:#f5f7f4;border-color:white;border-style:solid;border-bottom-width:1px;font-size:{{vm.scalenum*24}}px;line-height:{{vm.scalenum*60}}px;padding-left:{{vm.scalenum*28}}px"
+            ng-show="vm.isShowO()">
+            用石油排放CO
+            <sub>2</sub>:&nbsp;&nbsp;&nbsp;&nbsp;{{vm.O}}&nbsp;&nbsp;公斤
+        </div>
+        <div class="list" style="height:{{vm.scalenum*60}}px;background-color:#f5f7f4;border-color:white;border-style:solid;border-bottom-width:1px;font-size:{{vm.scalenum*24}}px;line-height:{{vm.scalenum*60}}px;padding-left:{{vm.scalenum*28}}px"
+            ng-show="vm.isShowK()">
+            用煤气排放CO
+            <sub>2</sub>:&nbsp;&nbsp;&nbsp;&nbsp;{{vm.K}}&nbsp;&nbsp;公斤
+        </div>
+        <div class="list" style="height:{{vm.scalenum*60}}px;background-color:#f5f7f4;border-color:white;border-style:solid;border-bottom-width:1px;font-size:{{vm.scalenum*24}}px;line-height:{{vm.scalenum*60}}px;padding-left:{{vm.scalenum*28}}px">
+            合计排放CO
+            <sub>2</sub>:&nbsp;&nbsp;&nbsp;&nbsp;{{vm.sum}}&nbsp;&nbsp;公斤
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,26 @@
+<ion-view class="login" ng-controller="LoginController as vm">
+    <ion-content>
+        <div style="text-align:center;">
+          <img class="icon-login" ng-src="assets/global/img/icon_login.jpg" >
+        </div>
+
+        <div class="title-app">
+          <h1 class="title-text"> 齐齐哈尔市重点企业能耗在线监测预警平台</h1>
+        </div>
+        <div class="padding content">
+            <form class="padding-top" name="loginForm" style="padding-left:45px;padding-right:45px;">
+                <label class="item item-input content-label"> 
+                  <img class="icon-account" ng-src="assets/global/img/user.png">
+              		<input ng-model="vm.username" type="text" placeholder="输入手机号或用户名" required style="padding-left:15px;font-size:15px;">
+            	  </label>
+                <label class="item item-input content-label">
+                  <img ng-src="assets/global/img/pwd.png" class="icon-account">
+              		<input ng-model="vm.password" type="password" placeholder="输入密码" required style="padding-left:15px;font-size:15px;">
+            	  </label>
+                <a class="button button-block button-positive button-login" ng-disabled="!loginForm.$valid" ng-click="vm.dologin()">
+              		登录
+           	 	</a>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

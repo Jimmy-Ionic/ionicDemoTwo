@@ -1,0 +1,39 @@
+<ion-view ng-controller="quotaBenchmarkingSetController as vm">
+  <!-- <ion-nav-bar class="bar-positive">
+    <ion-nav-buttons side="left">
+      <a class="new-buttons" ng-click="vm.goBack()">
+        <span class="left-img-button icon ion-ios-arrow-back "></span>
+      </a>
+    </ion-nav-buttons>
+  </ion-nav-bar> -->
+  <div class="bar bar-header bar-positive">
+    <button class="button button-light button-clear icon ion-ios-arrow-back left-img-button" ng-click="vm.goBack()">
+    </button>
+    <h1 class="title">对标条件</h1>
+</div>
+  
+  <ion-content class="has-header">
+    <div class="item">
+      标准类型:国家标准
+    </div>
+    <div id="mycontent">
+
+    </div>
+    <!--<div class="list">-->
+    <!--<label class="item item-input">-->
+    <!--&lt;!&ndash;<span class="input-label">指标值</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;<input type="text" id="BmarkingValue">&ndash;&gt;-->
+    <!--</label>-->
+    <!--</div>-->
+    <div class="item item-input item-select">
+      <div class="input-label">
+        标准值类型
+      </div>
+      <select id="type" ng-model="vm.type" ng-options="item.Id as item.Name for item in vm.StandardTypeData">
+      </select>
+    </div>
+    <div class="padding">
+      <a class="button button-block button-positive" ng-click="vm.toRealTime()">对标</a>
+    </div>
+  </ion-content>
+</ion-view>

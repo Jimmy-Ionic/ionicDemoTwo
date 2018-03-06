@@ -1,0 +1,61 @@
+<ion-view ng-controller="searchController as vm">
+    <!-- <ion-nav-bar class="bar-positive">
+        <ion-nav-buttons side="left">
+            <a class="new-buttons" ng-click="goBack()">
+                <i class="left-img-button icon ion-ios-arrow-back"></i>
+            </a>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <a class="new-buttons" href="" ng-click="vm.fun.confirm()">
+                <i class="right-text-button">确定</i>
+            </a>
+        </ion-nav-buttons>
+    </ion-nav-bar> -->
+    <div class="bar bar-header bar-positive">
+        <button class="button button-clear icon ion-ios-arrow-back" ng-click="goBack()">
+        </button>
+        <h1 class="title">查询</h1>
+        <button class="button button-light button-clear" style="font-size:15px;color:#ffffff;" ng-click="vm.fun.confirm()">确定
+        </button>
+    </div>
+    <ion-content class="has-header" has-supheader="false">
+        <div id="energyPublicity">
+            <div class="row row-no-padding padding">
+                <div class="col">
+                    <div class="row row-no-padding">
+                        <div class="col col-80 border">
+                            <div class="ui-select" style="height:{{vm.scalenum*70}}px !important;font-size:{{vm.scalenum*30}}px !important;line-height: {{vm.scalenum*70}}px !important">
+                                <div>
+                                    <span>
+                                        {{vm.currentDate}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col border" style="margin-left:20px;" ng-click="vm.fun.showcalender()">
+                            <div class="ui-select" style="height:{{vm.scalenum*70}}px !important;font-size:{{vm.scalenum*30}}px !important;line-height: {{vm.scalenum*70}}px !important">
+                                <i class="icon ion-ios-calendar-outline icon-middle"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-no-padding padding">
+                <div class="col border">
+                    <div class="item-select ui-select" style="height:{{vm.scalenum*70}}px !important;font-size:{{vm.scalenum*30}}px !important;line-height: {{vm.scalenum*70}}px !important">
+                        <div>
+                            <span>
+                                {{vm.selectObj.IndexName}}
+                            </span>
+                        </div>
+                        <select ng-model="vm.selectObj" ng-options="x as x.IndexName for x in vm.indexList"
+                            class="select-pub">
+                            <option value="" selected hidden></option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

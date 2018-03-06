@@ -1,0 +1,59 @@
+<ion-view ng-controller="ECAsonController as vm" view-title="能源消耗分析">
+    <ion-nav-bar class="bar-positive">
+        <ion-nav-buttons side="left">
+          <a class="new-buttons" href="" ng-click="vm.fun.goBack()">
+            <span class="left-img-button icon ion-ios-arrow-back "></span>
+          </a>
+        </ion-nav-buttons>
+      </ion-nav-bar>
+    <ion-content class="has-header" style="background-color:#f7f7f7">
+        <div class="list">
+            <div class="row row-no-padding eca-datas-title">
+                <div class="col eca-sec-data-title">
+                    <span>年能源消费量</span>&nbsp;<span class="common-xxsmall-unit">万吨标煤</span>
+                </div>
+            </div>
+            <div class="row eca-main-data-content" style="border-color:#c0c3c2;border-style:solid;border-bottom-width:1px">
+                <div class="col-60 eca-fst-data-content">
+                    <span>{{vm.d1}}</span>
+                </div>
+                <div class="col-40">
+                    <div class="row eca-sec-data-content" style="border-bottom-width:1px">
+                        <div class="col-40 eca-data-title">
+                            <span>同比:</span>
+                        </div>
+                        <div class="col-60 eca-data-num">
+                            <span>{{vm.d2}}%<i ng-class="{true:'ion-arrow-down-a color-green',false:'ion-arrow-up-a color-red'}[vm.d2<0]"></i></span>
+                        </div>
+                    </div>
+                    <div class="row eca-sec-data-content">
+                        <div class="col-50 eca-data-title">
+                            <span>本年平均:</span>
+                        </div>
+                        <div class="col-50 eca-data-num">
+                            <span>{{vm.d3}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="eca-datas-title">
+            <span class="eca-sec-data-title">年能源消费量12个月变化趋势</span>
+        </div>
+        <div class="list" style="background-color:#f7f7f7">
+            <div class="row row-no-padding">
+                <ng-echarts class="col col-100 echarts" ec-config="vm.chartGlobalConfig" ec-option="vm.lChart" id="lChart" style="height:230px">
+                </ng-echarts>
+            </div>
+        </div>  
+        <div class="eca-datas-title">
+            <span class="eca-sec-data-title">能源消费量近五年变化趋势</span>
+        </div>
+        <div class="list" style="background-color:#f7f7f7">
+            <div class="row row-no-padding">
+                <ng-echarts class="col col-100 echarts" ec-config="vm.chartGlobalConfig" ec-option="vm.bChart" id="Chart" style="height:230px">
+                </ng-echarts>
+            </div>
+        </div>  
+    </ion-content>
+</ion-view>

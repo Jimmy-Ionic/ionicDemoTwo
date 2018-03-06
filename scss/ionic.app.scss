@@ -1,0 +1,1003 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #387ef5 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
+$assertive:                       #ef473a !default;
+$royal:                           #886aea !default;
+$dark:                            #444 !default;
+*/
+
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../fonts" !default;
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";
+//lihao
+.cut-line {
+  height: 5px;
+  background-color: #f0f0f0;
+}
+
+.main-title {
+  height: 30px;
+  background-color: #e8eee9 !important;
+  color: #367227 !important;
+  font-size: 18px;
+  padding: 0px !important;
+  text-align: center;
+  line-height: 30px;
+}
+
+.trade-cut-line {
+  height: 6px;
+  background-color: #f2f5f5;
+  padding: 0px !important;
+}
+
+.title-green {
+  height: 30px;
+  font-size: 18px;
+  background-color: #64a64f;
+  padding-left: 16px;
+  line-height: 30px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  color: #ffffff;
+}
+
+.l-color-white {
+  color: #ffffff;
+}
+
+.l-tab-top1 {
+  max-width: 500px;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-right-color: #c0c3c2;
+  color: #333333;
+}
+
+.l-tab-top2 {
+  max-width: 500px;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: #c0c3c2;
+  color: #333333;
+}
+
+.l-a1 {
+  border-radius: 5px;
+}
+
+.l-a2 {
+  background-color: #f7f7f7;
+}
+
+.l-a3 {
+  height: 227px;
+}
+
+.l-a4 {
+  margin-top: -2px;
+  padding: 0px !important;
+}
+
+.l-a5 {
+  height: 50px !important;
+}
+
+.l-a6 {
+  padding: 0px !important;
+  font-size: 18px;
+  text-align: center;
+}
+
+.l-a7 {
+  color: #296697;
+  font-size: 20px;
+  line-height: 50px;
+}
+
+.l-a8 {
+  font-size: 18px;
+  line-height: 50px;
+  text-align: center;
+  font-weight: bold;
+  padding: 0px !important;
+}
+
+.l-a9 {
+  padding: 0px !important;
+  text-align: center;
+}
+
+.l-a10 {
+  padding: 0px !important;
+}
+
+//lihao
+//song
+.f16c333 {
+  font-size: 16px;
+  color: #333333
+}
+
+.f16c666 {
+  font-size: 16px;
+  color: #666666
+}
+
+.f20c666 {
+  font-size: 20px;
+  color: #666666
+}
+
+.tab-choose {
+  background-color: #63A74F!important;
+  color: #ffffff!important;
+  margin: 0px -10px;
+  padding: 0px 50px;
+}
+
+.order-status {
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  font-weight: bold;
+  display: table-cell;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #CDC0B0!important;
+}
+
+.padding-right {
+  padding-right: 20px!important;
+}
+
+.padding-left-small {
+  padding-left: 10px!important;
+}
+
+.padding-left-smallest {
+  padding-left: 5px!important;
+}
+
+.main-content {
+  font-size: 28px;
+  padding: 9px 0px!important;
+  text-align: center;
+  background-color: #f2f5f5;
+}
+
+.row+.row {
+  margin-top: 0px;
+  padding-top: 0;
+}
+
+.history-title1 {
+  text-align: left;
+  font-color: #fff;
+  background-color: #d0d7e2
+}
+
+.history-YOY {
+  min-height: 50px;
+  line-height: 50px;
+  padding-right: 5px;
+  background-color: #f7f7f7;
+}
+
+.history-left {
+  float: left;
+  font-size: 14px
+}
+
+.history-right {
+  float: right;
+  font-size: 14px
+}
+
+.history-title2 {
+  text-align: left;
+  height: 40px;
+  line-height: 40px;
+  color: #666666;
+  font-size: 16px;
+  background-color: #d0d7e2
+}
+
+.history-value {
+  min-height: 50px;
+  line-height: 50px;
+  color: #333333;
+  font-size: 18px;
+  text-align: center;
+  background-color: #f7f7f7
+}
+
+.more-history {
+  float: right;
+  text-decoration: none;
+  color: #666666;
+  font-size: 12px
+}
+
+.analyze-title {
+  background-color: #d0d7e2;
+  text-align: left;
+  min-height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  color: #666666;
+}
+
+.analyze-value {
+  height: 80px;
+  line-height: 80px;
+  font-size: 20px;
+  text-align: center;
+  background-color: #f7f7f7
+}
+
+.analyzeOutput-title {
+  background-color: #d0d7e2;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  color: #666666;
+}
+
+.list-item {
+  padding: 0 10px 0px 10px;
+  min-height: 60px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.region-trade-s {
+  max-width: 500px!important;
+  line-height: 40px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #333333
+}
+
+.search-label {
+  border-radius: 10px;
+  background-color: #fff;
+  font-size: 16px;
+}
+
+.list-item-order {
+  text-align: center;
+  border-radius: 50%;
+  color: #000;
+  background: yellow;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  font-weight: bold;
+  display: table-cell;
+}
+
+.bar-background {
+  background: #c7c7c7;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  // box-shadow: 0px 2px 0 rgba(0, 0, 0, 0.08);
+}
+
+.bar-style-blue {
+  height: 10px;
+  border-radius: 15px;
+  float: left;
+  background: #00b9ed
+}
+
+.bar-style-red {
+  height: 10px;
+  border-radius: 15px;
+  float: left;
+  background: #fe5821
+}
+
+// span{
+// 	font-size:80%!important;
+// }
+//end song
+//wang
+.login {
+  background-color: #474b64;
+  font-family: Microsoft YaHei;
+}
+
+.icon-login {
+  width: 105px;
+  height: 105px;
+  margin-top: 40px;
+}
+
+.title-app {
+  text-align: center;
+}
+
+.title-text {
+  color: #fff;
+  font-size: 24px;
+}
+
+.content {
+  margin-top: 45px;
+}
+
+.content-label {
+  margin-top: 14px;
+  border-radius: 10px !important;
+  padding-left: 15px;
+  height: 60px;
+}
+
+.icon-account {
+  width: 22px;
+  height: 25px;
+}
+
+.button-login {
+  margin-top: 14px;
+  border-radius: 10px !important;
+  height: 60px;
+  line-height: 60px;
+  background: linear-gradient(#8f995c, #87992e 52%, #8e9954);
+  font-size: 20px;
+}
+
+.tab-nav {
+  background-color: #325387 !important;
+  height: 60px !important;
+}
+
+.right-buttons .button {
+  background-color: #325387 !important;
+  border: 0px;
+}
+
+.qyjnlwcqk {
+  background-color: #63a74f;
+  color: white !important;
+}
+
+.alarm-row {
+  padding: 0px;
+  height: 50px;
+  line-height: 40px;
+}
+
+.alarm-id-row {
+  padding: 0px;
+  background-color: #00b7ed;
+  height: 10px;
+  border-radius: 15px;
+}
+
+.duibiao {
+  text-align: center;
+  background-color: #f4f8f4;
+  padding-top: 40px;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.duibiao-img {
+  height: 60px;
+  widthh: 60px;
+}
+
+.duibiao-font {
+  text-align: center;
+  font-size: 22px;
+  font-color: #333333 !important;
+  background-color: #f4f8f4;
+  padding-top: 19px !important;
+  padding-bottom: 35px;
+}
+
+.duibiao-ioncontent {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+//end wang
+//zong
+.icon-arrow-left {
+  font-size: 30px;
+  line-height: 30px;
+  margin-left: 20px!important;
+  margin-top: 8px;
+  color: #fff;
+}
+
+.icon-refresh-right {
+  font-size: 30px;
+  line-height: 30px;
+  margin-right: 20px;
+  margin-right: 8px;
+  color: #fff;
+}
+
+.left-buttons {
+  margin-top: 8px;
+}
+
+.right-buttons {
+  margin-top: 8px;
+}
+
+.tabs-all {
+  background-color: #ebeeee;
+  top: 0px !important;
+  height: 40px;
+  line-height: 40px;
+}
+
+.row-text {
+  font-size: 16px;
+  padding: 6px 0px!important;
+}
+
+.main-title2 {
+  background-color: #63a74f;
+  color: #fff;
+  font-size: 20px; // line-height:50px;
+  padding: 10px 0px 10px 15px!important;
+}
+
+//                            _ooOoo_  
+//                           o8888888o  
+//                           88" . "88  
+//                           (| -_- |)  
+//                            O\ = /O  
+//                        ____/`---'\____  
+//                      .   ' \\| |// `.  
+//                       / \\||| : |||// \  
+//                     / _||||| -:- |||||- \  
+//                       | | \\\ - /// | |  
+//                     | \_| ''\---/'' | |  
+//                      \ .-\__ `-` ___/-. /  
+//                   ___`. .' /--.--\ `. . __  
+//                ."" '< `.___\_<|>_/___.' >'"".  
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |  
+//                 \ \ `-. \_ __\ /__ _/ .-` / /  
+//         ======`-.____`-.___\_____/___.-`____.-'======  
+//                            `=---='  
+//  
+//         .............................................  
+//                  佛祖镇楼                  BUG辟易  
+//          佛曰:  
+//                  写字楼里写字间，写字间里程序员；  
+//                  程序人员写程序，又拿程序换酒钱。  
+//                  酒醒只在网上坐，酒醉还来网下眠；  
+//                  酒醉酒醒日复日，网上网下年复年。  
+//                  但愿老死电脑间，不愿鞠躬老板前；  
+//                  奔驰宝马贵者趣，公交自行程序员。  
+//                  别人笑我忒疯癫，我笑自己命太贱；  
+//                  不见满街漂亮妹，哪个归得程序员？ 
+////////////////////////新样式类/////////////////
+.has-header {
+  top: 0px !important;
+}
+
+.new-content {
+  margin-top: 90px;
+}
+
+.platform-android .bar .title {
+  font-size: 36px;
+  height: 90px;
+  line-height: 90px;
+  margin-top: 0px !important;
+}
+
+.new-naviBar {
+  height: 90px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: #325387;
+  color: #ffffff;
+}
+
+.new-button-back {
+  line-height: 70px;
+  font-size: 36px;
+  color: #ffffff;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.scroll-content {
+  padding-top: 0px !important;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+
+.new-title1 {
+  height: 70px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 30px;
+  background-color: #e8eee9;
+  color: #367225;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.new-chartBackgroundColor {
+  background-color: #f3f3f3;
+}
+
+.new-chartHeight1 {
+  height: 350px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.new-title2 {
+  height: 80px;
+  line-height: 80px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 15px;
+  padding-right: 0px;
+  background-color:#E6F2FF;
+  color: #ffffff;
+  font-size: 30px;
+}
+
+.new-stripe-title-border {
+  padding-top: 10px;
+  padding-bottom: 0px;
+  line-height: 40px;
+}
+
+.new-stripe-title {
+  padding: 0px;
+  font-size: 22px;
+  font-weight: bold;
+  height: 40px;
+  line-height: 40px;
+}
+
+.new-stripe-data {
+  padding: 0px;
+  text-align: right;
+  font-size: 18px;
+  color: #666666;
+  height: 40px;
+  line-height: 40px
+}
+
+.new-stripe-bottom-line {
+  padding: 0px;
+  height: 40px;
+  border-color: #ebebeb;
+  border-style: solid;
+  border-bottom-width: 1px;
+}
+
+.new-stripe-background {
+  padding-top: 0px;
+  height: 10px;
+  background-color: #c7c7c7;
+  border-radius: 15px;
+  padding-left: 0px;
+}
+
+.new-stripe-half-left {
+  padding: 0px;
+  background-color: #00b7ed;
+  height: 10px;
+  border-radius: 15px;
+}
+
+.new-stripe-half-right {
+  padding: 0px;
+  height: 10px;
+  border-radius: 15px;
+}
+
+.new-tab-top {
+  height: 70px;
+  background-color: #f7f7f7;
+}
+
+.tabs.tabs-top {
+  top: 0px;
+}
+
+.new-tab-item {
+  font-size: 30px;
+  height: 70px;
+  line-height: 70px;
+}
+
+.data-cut-line {
+  height: 10px;
+  background-color: #e6e9e9;
+}
+
+.new-data-border {
+  height: 100px;
+}
+
+.new-data-icon {
+  font-size: 65px;
+  color: #296697;
+  line-height: 100px;
+  height: 100px;
+  text-align: center;
+}
+
+.new-data-name {
+  font-size: 24px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.head-unit {
+  height: 40px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  color: #989898;
+  font-size: 20px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.data {
+  height: 60px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  font-size: 28px;
+  line-height: 60px;
+  text-align: center;
+}
+
+.new-tab-center {
+  height: 110px;
+  background-color: #ebeeee;
+}
+
+.new-tab-item-center {
+  height: 110px;
+  line-height: 80px;
+  color: #333333;
+}
+
+.new-tab-center-icon {
+  color: #296697;
+}
+
+.new-tab-center-text {
+  font-size: 22px;
+  margin-top: 20px;
+}
+
+.new-datas-title {
+  height: 42px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #9ba3a9;
+  padding-left: 20px;
+  background-color: #d0d7e2;
+  padding-right: 12px;
+  padding-bottom: 0px !important;
+  padding-top: 0px !important;
+}
+
+.new-sec-data-title {
+  font-size: 20px;
+  color: #000100;
+  line-height: 42px;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  height: 42px;
+}
+
+.new-check-history {
+  font-size: 20px;
+  text-align: right;
+  line-height: 42px;
+  padding: 0px !important;
+  height: 42px;
+}
+
+.new-main-data-content {
+  height: 106px;
+  background-color: #edf0ef;
+  margin: 0px !important;
+}
+
+.new-fst-data-content {
+  font-size: 50px;
+  color: #095381;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-right-color: #c0c3c2;
+  width: 60%;
+  height: 106px;
+  text-align: center;
+  padding: 0px;
+  line-height: 106px;
+}
+
+.new-sec-data-content {
+  border-style: solid;
+  border-color: #c0c3c2;
+  color: #333333;
+  height: 53px;
+  padding: 0px;
+  line-height: 53px;
+}
+
+.new-data-title {
+  padding-left: 10px;
+  font-size: 18px;
+  color: #333333;
+  line-height: 53px;
+}
+
+.list {
+  position: relative;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0;
+  margin-bottom: 0px !important;
+}
+
+.new-data-num {
+  font-size: 20px;
+  padding-right: 10px;
+  text-align: right;
+  line-height: 53px;
+}
+
+.title+.buttons {
+  top: 0px !important;
+  right: 0px !important;
+  bottom: 0px !important;
+}
+
+.new-unit {
+  font-size: 14px;
+  font-color: #666667;
+  font-weight: normal;
+}
+
+.row+.row {
+  margin-top: 0px;
+}
+
+.new-history-title {
+  height: 42px;
+  background-color: #d0d6e2;
+  font-size: 20px;
+  padding-left: 20px;
+  padding-right: 12px;
+  line-height: 42px;
+}
+
+.new-serch-input-padding {
+  padding-right: 20px;
+  padding-left: 20px;
+  height: 90px;
+  background-color: #dee6eb;
+}
+
+.new-serch-label {
+  margin-top: 10px;
+  border-radius: 10px;
+  height: 70px;
+  font-size: 20px;
+}
+
+.new-unit-wsk {
+  font-size: 18px;
+  color: #666666;
+  padding-left: 450px; //margin-top:-100px;
+  height: 40px;
+  line-height: 40px; //padding-bottom:100px;
+}
+
+.ion-arrow-down-a {
+  color: #63A74F;
+}
+
+.ion-arrow-up-a {
+  color: #f82a3a;
+}
+
+.new-unit-title2 {
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.alarm-ratio {
+  text-align: right;
+  color: #666666;
+}
+
+.item-avatar {
+  min-height: 1px
+}
+
+.item-avatar .item-content {
+  min-height: 1px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.border-right {
+  border-right: 1px solid #CDC0B0!important;
+}
+
+.item1 {
+  text-align: center!important;
+  border-color: #ddd;
+  background-color: #fff;
+  color: #444;
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin: -1px;
+  padding: 0px 0px 0px 0px;
+  border-right: 1px solid #CDC0B0;
+}
+
+.ui-select {
+  text-align: center;
+}
+
+.select-pub {
+  display: block!important;
+  height: 100%!important;
+  width: 100%!important;
+  text-align: center!important;
+  border: 0!important;
+  padding-right: 30px!important;
+  max-width: 100%!important;
+  font-size: 16px!important;
+}
+
+.main-value {
+  height: 165px;
+  line-height: 130px;
+  color: #0b5280;
+  text-align: center;
+  font-size: 50px;
+  background-color: #f7f7f7;
+  color: #0b5280;
+}
+
+.output-value {
+  height: 135px;
+  line-height: 170px;
+  color: #0b5280;
+  text-align: center;
+  font-size: 50px;
+  background-color: #f7f7f7;
+  color: #0b5280;
+}
+
+.output-value-province {
+  color: #666666;
+  text-align: center;
+  font-size: 20px;
+  padding-bottom: 20px !important;
+  background-color: #f7f7f7;
+}
+
+.unit-medium {
+  font-size: 20px;
+}
+
+.color-green {
+  color: #63A74F;
+}
+
+.color-red {
+  color: #a70e16;
+}
+
+.tab-not-active {
+  //margin-top:10px;
+  background: #ffffff;
+  height: 60px;
+  line-height: 60px;
+}
+
+.tab-active {
+  background-color: #63A74F!important;
+  color: #ffffff!important; // margin:0px -10px;
+  //padding:0px 50px;
+}
+
+.text-title {
+  font-size: 22px;
+  color: #333333;
+  background-color: #f2f5f5;
+  height: 50px;
+  line-height: 50px;
+}
+
+.ui-select select {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 70px;
+  opacity: 0;
+  line-height: 70px;
+}
+
+.padding-left {
+  padding-left: 20px!important;
+}
+
+.more-history {
+  float: right;
+  text-decoration: none;
+  color: #666666;
+  font-size: 12px
+}
+
+.analyze-title {
+  background-color: #d0d7e2;
+  text-align: left;
+  height: 42px;
+  line-height: 42px;
+  font-size: 18px;
+  color: #666666;
+}
+
+.analyzeOutput-value {
+  height: 100px;
+  line-height: 100px;
+  font-size: 20px;
+  text-align: center;
+  background-color: #f7f7f7
+}
+
+.out-text-hidden {
+  overflow: hidden;
+  /*内容超出后隐藏*/
+  text-overflow: ellipsis;
+  /* 超出内容显示为省略号*/
+  white-space: nowrap;
+  /*文本不进行换行*/
+}

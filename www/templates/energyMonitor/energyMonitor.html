@@ -1,0 +1,92 @@
+<ion-view ng-controller="energyMonitorController as vm">
+  <!-- <ion-nav-bar class="bar-positive">
+    <ion-nav-buttons side="left">
+      <a class="new-buttons" href="#/home/analyse">
+        <span class="left-img-button icon ion-ios-arrow-back "></span>
+      </a>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <a class="new-buttons" href="#/energyMonitorSearch">
+        <span class="right-img-button icon ion-ios-search-strong "></span>
+      </a>
+    </ion-nav-buttons>
+  </ion-nav-bar> -->
+  <div class="bar bar-header bar-positive">
+    <a class="button button-light button-clear icon ion-ios-arrow-back left-img-button" href="#/home/analyse">
+    </a>
+    <h1 class="title">能耗监测分析</h1>
+    <a class="button button-light button-clear icon ion-ios-search-strong" href="#/energyMonitorSearch">
+    </a>
+  </div>
+  <ion-content class="has-header" has-supheader="false" overflow-scroll="true" style="overflow:auto;">
+    <ion-refresher on-refresh="vm.fun.doRefresh()" pulling-text="下拉刷新">
+    </ion-refresher>
+    <div class="row margin-top">
+      <div class="col">
+        <i style="font-size:16px;color:#5E5E5E;font-weight:bold;">{{vm.enterpriseName}}</i>
+      </div>
+      <div class="col text-right">
+        <i style="font-size:15px;color:#5E5E5E">{{vm.currentDate}}</i>
+      </div>
+    </div>
+    <div class="row row-no-padding border-bottom">
+      <div class="col" ng-repeat="x in vm.indexList">
+        <div class="common-tab-not-active border-right" ng-class="{'common-tab-active':vm.energyId==x.indexId}" ng-click="vm.fun.indexChange(x.indexId)">
+          <i>{{x.IndexName}}</i>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="row row-no-padding" style="height:300px;max-height:350px;">
+        <ng-echarts class="col col-100 echarts" ec-config="vm.chartGlobalConfig" ec-option="vm.eChartsData">
+        </ng-echarts>
+      </div>
+      <div class="row" style="font-size:xx-small;background-color:#f7f7f7">
+        <div class="col col-10 text-center col-center border-right">
+          <i class="icon ion-ios-pulse-strong icon-middle"></i>
+        </div>
+        <div class="col text-center col-center border-right">
+          <div>
+            <span class="text-center">{{vm.maxValue}}</span>
+            &nbsp;
+            <span ng-hide="vm.energyId == 'water'">{{vm.indexUnitSymbol}}</span>
+            <span ng-show="vm.energyId == 'water'">{{vm.indexUnitSymbol}}<sup>3</sup></span>
+          </div>
+          <div class="text-center">最大值</div>
+        </div>
+        <div class="col text-center col-center border-right">
+          <div>
+            <span class="text-center">{{vm.minValue}}</span>
+            &nbsp;
+            <span ng-hide="vm.energyId == 'water'">{{vm.indexUnitSymbol}}</span>
+            <span ng-show="vm.energyId == 'water'">{{vm.indexUnitSymbol}}<sup>3</sup></span>
+          </div>
+          <div class="text-center">最小值</div>
+        </div>
+        <div class="col text-center col-center">
+          <div>
+            <span class="text-center">{{vm.averageValue}}</span>
+            &nbsp;
+            <span ng-hide="vm.energyId == 'water'">{{vm.indexUnitSymbol}}</span>
+            <span ng-show="vm.energyId == 'water'">{{vm.indexUnitSymbol}}<sup>3</sup></span>
+          </div>
+          <div class="text-center">平均值</div>
+        </div>
+      </div>
+    </div>
+    <ion-list>
+      <ion-item class="new-item no-padding" ng-repeat="item in vm.tableDataList">
+        <div class="row text-center">
+          <div class="col text-center">
+            {{(item.time)}}
+          </div>
+          <div class="col text-center">
+            {{item.value}}
+            &nbsp;
+            {{vm.indexUnitSymbol}}
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

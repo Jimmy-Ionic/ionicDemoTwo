@@ -1,0 +1,16 @@
+<ion-view ng-controller="HomeController as vm" cache-view="true">
+  <ion-tabs class="tabs-positive tabs-icon-top">
+    <ion-tab title="首页" icon-on="ion-ios-home" icon-off="ion-ios-home-outline" href="#/home/energyRank/">
+      <ion-nav-view name="energyRank"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="分析" icon-on="ion-ios-analytics" icon-off="ion-ios-analytics-outline" href="#/home/analyse">
+      <ion-nav-view name="analyse"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="对标" icon-on="ion-ios-cloud" icon-off="ion-ios-cloud-outline" href="#/home/about">
+      <ion-nav-view name="about"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="退出" icon-on="ion-ios-gear" icon-off="ion-ios-gear-outline" href="#/home/setting">
+      <ion-nav-view name="setting"></ion-nav-view>
+    </ion-tab>
+  </ion-tabs>
+</ion-view>
